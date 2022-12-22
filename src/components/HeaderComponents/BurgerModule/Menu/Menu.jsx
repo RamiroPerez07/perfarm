@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledMenu } from './Menu.js';
 import  { bool } from 'prop-types';
 
-const Menu = ({openMenu}) => {
+export const Menu = ({openMenu}) => {
   return (
     <StyledMenu openMenu={openMenu}>
       <a href="/">
@@ -24,5 +24,3 @@ const Menu = ({openMenu}) => {
 Menu.propTypes = {
   openMenu: bool.isRequired,
 }
-
-export default Menu;

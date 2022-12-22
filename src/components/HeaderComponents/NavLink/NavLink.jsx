@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyledNavLink } from './NavLink';
 import { useContext } from 'react';
-import { FontContext } from '../../contexts/font-context';
+import { FontContext } from '../../../contexts/font-context';
 
-const NavLink = ({children}) => {
+export const NavLink = ({children}) => {
 
   const fonts = useContext(FontContext);
   const {fontData} = fonts;
@@ -13,4 +13,3 @@ const NavLink = ({children}) => {
   )
 }
 
-export default NavLink

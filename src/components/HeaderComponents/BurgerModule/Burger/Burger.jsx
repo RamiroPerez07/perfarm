@@ -3,7 +3,7 @@ import React from 'react';
 import { StyledBurger } from './Burger.js';
 import { bool, func } from 'prop-types';
 
-const Burger = ({openMenu, setOpenMenu}) => {
+export const Burger = ({openMenu, setOpenMenu}) => {
   return (
     <StyledBurger openMenu={openMenu} onClick={ () => setOpenMenu(!openMenu) }>
       <div />
@@ -18,4 +18,3 @@ Burger.propTypes = {
   setOpenMenu: func.isRequired,
 };
 
-export default Burger;
