@@ -1,10 +1,20 @@
+import React from 'react';
 import styled from "styled-components";
+
+export const BurgerContainer = ({children}) => {
+  return (
+    <>
+      <StyledBurgerContainer>
+        {children}
+      </StyledBurgerContainer>
+    </>
+  )
+}
+
 
 export const StyledBurgerContainer = styled.div`
   display: none;
   @media (max-width: ${({theme}) => theme.mobile}){
-    width: 2rem;
-    height: 2rem;
     display: grid;
     place-items: center;
   }
