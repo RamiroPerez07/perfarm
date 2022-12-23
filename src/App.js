@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import React,{ useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme , darkTheme } from './themes/themes.js';
 import { GlobalStyle } from './globalStyles/globalStyle.js';
-import { Header } from './components/headerComponents/Header/Header.jsx';
-import { ThemeToggleBtn } from './components/headerComponents/ThemeToggleBtn/ThemeToggleBtn.jsx';
+import { Header } from './components/HeaderComponents/Header/Header.jsx';
+import { ThemeToggleBtn } from './components/HeaderComponents/ThemeToggleBtn/ThemeToggleBtn.jsx';
 import { useDarkMode } from './customHooks/useDarkMode.js';
-import {Navbar} from './components/headerComponents/Navbar/Navbar.jsx';
-import { BurgerContainer } from './components/headerComponents/Burger/BurgerContainer.jsx';
-import { Burger } from './components/headerComponents/Burger/Burger.jsx';
-import {Hero} from './components/mainComponents/Hero/Hero.jsx';
+import {Navbar} from './components/HeaderComponents/Navbar/Navbar.jsx';
+import { BurgerContainer } from './components/HeaderComponents/Burger/BurgerContainer.jsx';
+import { Burger } from './components/HeaderComponents/Burger/Burger.jsx';
+import {Hero} from './components/MainComponents/Hero/Hero.jsx';
 
 function App() {
 
