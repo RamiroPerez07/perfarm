@@ -1,7 +1,10 @@
 export const lightTheme = {
   primary: "#ffffff",
   secondary: "#1C2023",
-  terciary: "#E73092",
+  terciary: "#4593ed",
+  buttonColor: "#0469dd",
+  buttonHover: "#3788e5",
+  frameColor: "#dddddd",
   desktopL: '1920px',
   desktopM: '1680px',
   desktopS: '1520px',
@@ -14,7 +17,10 @@ export const lightTheme = {
 export const darkTheme = {
   primary: "#1C2023",
   secondary: "#ffffff",
-  terciary: "#E73092",
+  terciary: "#4593ed",
+  buttonColor: "#0469dd",
+  buttonHover: "#3788e5",
+  frameColor: "#1c1c1c",
   desktopL: '1920px',
   desktopM: '1680px',
   desktopS: '1520px',

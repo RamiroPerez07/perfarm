@@ -17,9 +17,9 @@ const StyledNavbar = styled.nav`
     grid-auto-flow: row;
     place-content: center;
     transition: transform 0.3s ease-in-out;
-    box-shadow: 0px 1px 5px -4px ${(theme) => theme.secondary};
+    box-shadow: 0px 1px 5px -4px ${({theme}) => theme.secondary};
     transform: ${({ openBurgerMenu }) => openBurgerMenu ? 'translateX(0)' : 'translateX(-100%)'};
-    background-color: ${(theme) => theme.secondary};
+    background-color:  ${({theme}) => theme.primary};
     z-index: 2;
   }
 `;
@@ -28,6 +28,7 @@ const StyledLink = styled.a`
   color: ${({theme}) => theme.secondary };
   font-weight: 500;
   font-size: 1.1rem;
+  text-align: center;
 
   &:hover{
     color: ${({theme}) => theme.terciary };

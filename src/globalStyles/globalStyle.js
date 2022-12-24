@@ -27,6 +27,8 @@ export const GlobalStyle = createGlobalStyle`
     align-items: start;
     justify-items: center;
     grid-auto-rows: min-content;
+    position: relative;
+    z-index: 0;
   } 
 
   .App{
@@ -48,6 +50,20 @@ export const GlobalStyle = createGlobalStyle`
     align-items: start;
     justify-items: center;
     grid-auto-rows: min-content;
+    position: relative;
+    z-index: 0;
+  }
+
+  .btn-style1{
+    background-color: ${({theme}) => theme.buttonColor};
+    color: #ffffff; 
+    border: 0;
+    cursor: pointer;
+    transition: all 0.2s linear;
+
+    &:hover{
+      background-color: ${({theme}) => theme.buttonHover};
+    }
   }
 
 `;

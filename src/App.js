@@ -9,6 +9,9 @@ import {Navbar} from './components/HeaderComponents/Navbar/Navbar.jsx';
 import { BurgerContainer } from './components/HeaderComponents/Burger/BurgerContainer.jsx';
 import { Burger } from './components/HeaderComponents/Burger/Burger.jsx';
 import {Hero} from './components/MainComponents/Hero/Hero.jsx';
+import { ProductContainer } from './components/MainComponents/ProductSection/ProductContainer/ProductContainer.jsx';
+import { Products } from './data/products.js';
+import { ProductCard } from './components/MainComponents/ProductSection/ProductCard/ProductCard.jsx';
 
 function App() {
 
@@ -34,6 +37,21 @@ function App() {
         </Header>
         <main>
           <Hero />
+          <ProductContainer>
+            {
+              Products.map( (product) => {
+                return (<ProductCard 
+                          productId = {product.id}
+                          productName = {product.name}
+                          productBrand = {product.brand}
+                          productDescription = {product.description}
+                          productPrice = {product.price}
+                          productStock = {product.stock}
+                          productImg = {product.img_url}
+                        />)
+              })
+            }
+          </ProductContainer>
         </main>
       </div>
     </ThemeProvider>

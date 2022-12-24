@@ -16,24 +16,14 @@ const StyledH1 = styled.h1`
   font-size: 3.3rem;
   font-weight: 800;
   text-align: center;
-  color: ${({theme}) => theme.secondary }
+  color: ${({theme}) => theme.secondary };
 `;
 
 const StyledBtn = styled.button.attrs({type:"submit"})`
   padding: 15px 25px;
-  background-color: ${({theme}) => theme.secondary };
-  color: ${({theme}) => theme.primary };
   border-radius: 8px;
   font-size: 1.2rem;
-  cursor: pointer;
-  border: none;
-  outline: none;
   font-weight: 600;
-  transition: all 0.2s linear;
-
-  &:hover{
-    background-color: ${({theme}) => theme.terciary };
-  }
 `;
 
 const StyledImg = styled.div`
@@ -51,7 +41,7 @@ export const Hero = () => {
     <StyledSection>
       <StyledImg />
       <StyledH1>Perfarm</StyledH1>
-      <StyledBtn>Productos</StyledBtn>
+      <StyledBtn className='btn-style1'>Productos</StyledBtn>
     </StyledSection>
   )
 };
