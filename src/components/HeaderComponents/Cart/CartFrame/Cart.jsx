@@ -1,5 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
+import { CartProduct } from '../CartProduct/CartProduct';
+
+
+const StyledCart = styled.div`
+  width: 100%;
+  max-width: 450px;
+  height: calc(100% - 60px);
+  right: 0px;
+  top: 60px;
+  position: fixed;
+  z-index: 1;
+  background-color: ${({theme}) => theme.primary};
+  box-shadow: 0px 0px 5px -2px ${({theme}) => theme.secondary};
+  padding: 2em 1.5em;
+  display: grid;
+  align-content: start;
+  align-items: start;
+  justify-items: center;
+  gap: 1em;
+  overflow-y: scroll;
+  transform: ${({ openCart }) => openCart ? 'translateX(0%)' : 'translateX(100%)'};
+  transition: all 0.2s linear;
+
+  &::-webkit-scrollbar{
+    visibility: hidden;
+  }
+`;
 
 const StyledCloseCartBtn = styled.button`
   width: 18px;
@@ -37,31 +64,6 @@ const StyledCloseCartBtn = styled.button`
 
 `;
 
-const StyledCart = styled.div`
-  width: 100%;
-  max-width: 400px;
-  height: calc(100% - 60px);
-  right: 0px;
-  top: 60px;
-  position: fixed;
-  z-index: 1;
-  background-color: ${({theme}) => theme.primary};
-  box-shadow: 0px 0px 5px -2px ${({theme}) => theme.secondary};
-  padding: 2em 1.5em;
-  display: grid;
-  align-content: start;
-  align-items: start;
-  justify-items: center;
-  gap: 1em;
-  overflow-y: scroll;
-  transform: ${({ openCart }) => openCart ? 'translateX(0%)' : 'translateX(100%)'};
-  transition: all 0.2s linear;
-
-  &::-webkit-scrollbar{
-    visibility: hidden;
-  }
-`;
-
 const StyledH2 = styled.h2`
   text-align: left;
   font-weight: 700;
@@ -72,7 +74,7 @@ const StyledH2 = styled.h2`
 const StyledProductContainer = styled.div`
   width: 95%;
   min-height: 300px;
-  background-color: ${({theme}) => theme.frameColor };
+  background-color: ${({theme}) => theme.primary };
   display: grid;
   align-items: start;
   justify-items: center;
@@ -120,7 +122,12 @@ export const Cart = ({openCart, setOpenCart}) => {
       <StyledCloseCartBtn onClick={() => setOpenCart(!openCart)} />
       <StyledH2>Tus productos</StyledH2>
       <StyledProductContainer>
-      
+        <CartProduct 
+          productImg="./img/products/shalimar.png"
+          productName = "Shalimar"
+          productBrand = "Ramiro Perez"
+          productPrice = "1650"
+        />
       </StyledProductContainer>
       <StyledSeparator />
       <StyledContainer>
