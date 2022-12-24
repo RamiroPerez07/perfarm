@@ -19,7 +19,7 @@ const StyledCard = styled.div`
 
 const StyledImg = styled.div`
   width: 200px;
-  height: 200px;
+  height: 150px;
   background-image: ${({imgUrl})=>`url('${imgUrl}')`};
   background-repeat: no-repeat;
   background-size: contain;

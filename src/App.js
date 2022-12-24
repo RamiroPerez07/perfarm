@@ -12,6 +12,8 @@ import {Hero} from './components/MainComponents/Hero/Hero.jsx';
 import { ProductContainer } from './components/MainComponents/ProductSection/ProductContainer/ProductContainer.jsx';
 import { Products } from './data/products.js';
 import { ProductCard } from './components/MainComponents/ProductSection/ProductCard/ProductCard.jsx';
+import { CartIcon } from './components/HeaderComponents/Cart/CartIcon/CartIcon.jsx';
+import { Cart } from './components/HeaderComponents/Cart/CartFrame/Cart.jsx';
 
 function App() {
 
@@ -31,6 +33,8 @@ function App() {
         <Header>
           <Navbar openBurgerMenu={openBurgerMenu} />
           <ThemeToggleBtn theme={theme} toggleTheme={toggleTheme} />
+          <CartIcon />
+          <Cart />
           <BurgerContainer>
             <Burger openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={setOpenBurgerMenu} />
           </BurgerContainer>
