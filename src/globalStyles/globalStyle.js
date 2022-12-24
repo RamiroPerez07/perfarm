@@ -66,4 +66,18 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .btn-style2{
+    background-color: ${({theme}) => theme.primary};
+    color: ${({theme}) => theme.secondary};
+    border: 1px solid ${({theme}) => theme.secondary};
+    cursor: pointer;
+    transition: all 0.2s linear;
+
+    &:hover{
+      background-color: ${({theme}) => theme.secondary};
+      color: ${({theme}) => theme.primary};
+      border: 1px solid ${({theme}) => theme.secondary};
+    }
+  }
+
 `;

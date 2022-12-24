@@ -17,6 +17,7 @@ import { Cart } from './components/HeaderComponents/Cart/CartFrame/Cart.jsx';
 
 function App() {
 
+  const [openCart, setOpenCart] = useState(false); 
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
   //temas 
   const [theme, toggleTheme, mountedComponent] = useDarkMode();
@@ -33,8 +34,8 @@ function App() {
         <Header>
           <Navbar openBurgerMenu={openBurgerMenu} />
           <ThemeToggleBtn theme={theme} toggleTheme={toggleTheme} />
-          <CartIcon />
-          <Cart />
+          <CartIcon openCart={openCart} setOpenCart={setOpenCart} />
+          <Cart openCart={openCart} setOpenCart={setOpenCart} />
           <BurgerContainer>
             <Burger openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={setOpenBurgerMenu} />
           </BurgerContainer>

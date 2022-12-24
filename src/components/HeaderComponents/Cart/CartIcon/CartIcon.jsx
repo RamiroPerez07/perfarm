@@ -3,6 +3,8 @@ import {BsCartFill} from 'react-icons/bs';
 import styled from 'styled-components';
 
 const StyledCartIConContainer = styled.div`
+  height: 20px;
+  width: 20px;
   display:grid;
   position: relative;
   place-items: center;
@@ -31,13 +33,11 @@ const StyledCartCounter = styled.div`
   font-weight: 400;
 `;
 
-export const CartIcon = () => {
+export const CartIcon = ({openCart, setOpenCart}) => {
   return (
-    <>
-      <StyledCartIConContainer>
-        <StyledCartIcon />
-        <StyledCartCounter>5</StyledCartCounter>
-      </StyledCartIConContainer>
-    </>
+    <StyledCartIConContainer openCart={openCart} onClick={() => setOpenCart(!openCart) }>
+      <StyledCartIcon />
+      <StyledCartCounter>5</StyledCartCounter>
+    </StyledCartIConContainer>
   )
 }
