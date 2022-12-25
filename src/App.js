@@ -14,8 +14,11 @@ import { Products } from './data/products.js';
 import { ProductCard } from './components/MainComponents/ProductSection/ProductCard/ProductCard.jsx';
 import { CartIcon } from './components/HeaderComponents/Cart/CartIcon/CartIcon.jsx';
 import { Cart } from './components/HeaderComponents/Cart/CartFrame/Cart.jsx';
+import { Provider} from 'react-redux';
+import { store } from './store/index.js';
 
 function App() {
+
 
   const [openCart, setOpenCart] = useState(false); 
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
@@ -29,36 +32,39 @@ function App() {
 
   return (
     <ThemeProvider theme={themeMode}>
-      <GlobalStyle />
-      <div className="App">
-        <Header>
-          <Navbar openBurgerMenu={openBurgerMenu} />
-          <ThemeToggleBtn theme={theme} toggleTheme={toggleTheme} />
-          <CartIcon openCart={openCart} setOpenCart={setOpenCart} />
-          <Cart openCart={openCart} setOpenCart={setOpenCart} />
-          <BurgerContainer>
-            <Burger openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={setOpenBurgerMenu} />
-          </BurgerContainer>
-        </Header>
-        <main>
-          <Hero />
-          <ProductContainer>
-            {
-              Products.map( (product) => {
-                return (<ProductCard 
-                          productId = {product.id}
-                          productName = {product.name}
-                          productBrand = {product.brand}
-                          productDescription = {product.description}
-                          productPrice = {product.price}
-                          productStock = {product.stock}
-                          productImg = {product.img_url}
-                        />)
-              })
-            }
-          </ProductContainer>
-        </main>
-      </div>
+      <Provider store={store}>
+        <GlobalStyle />
+        <div className="App">
+          <Header>
+            <Navbar openBurgerMenu={openBurgerMenu} />
+            <ThemeToggleBtn theme={theme} toggleTheme={toggleTheme} />
+            <CartIcon openCart={openCart} setOpenCart={setOpenCart} />
+            <Cart openCart={openCart} setOpenCart={setOpenCart} />
+            <BurgerContainer>
+              <Burger openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={setOpenBurgerMenu} />
+            </BurgerContainer>
+          </Header>
+          <main>
+            <Hero />
+            <ProductContainer>
+              {
+                Products.map( (product) => {
+                  return (<ProductCard 
+                            productId = {product.id}
+                            productName = {product.name}
+                            productBrand = {product.brand}
+                            productDescription = {product.description}
+                            productPrice = {product.price}
+                            productStock = {product.stock}
+                            productImg = {product.img_url}
+                            key = {product.id}
+                          />)
+                })
+              }
+            </ProductContainer>
+          </main>
+        </div>
+      </Provider>
     </ThemeProvider>
   );
 }

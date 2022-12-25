@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { CartProduct } from '../CartProduct/CartProduct';
 
@@ -117,17 +118,28 @@ const StyledBtn = styled.button`
 `;
 
 export const Cart = ({openCart, setOpenCart}) => {
+
+  const state = useSelector(state => state.cart);
+
   return (
     <StyledCart openCart={openCart} setOpenCart={setOpenCart}>
       <StyledCloseCartBtn onClick={() => setOpenCart(!openCart)} />
       <StyledH2>Tus productos</StyledH2>
       <StyledProductContainer>
-        <CartProduct 
-          productImg="./img/products/shalimar.png"
-          productName = "Shalimar"
-          productBrand = "Ramiro Perez"
-          productPrice = "1650"
-        />
+        {
+          state.cart.map(product => {
+            return (
+              <CartProduct 
+              productImg= {product.img_url}
+              productName = {product.name}
+              productBrand = {product.brand}
+              productPrice = {product.price}
+              key = {product.id}
+            />
+            )
+          })
+        }
+
       </StyledProductContainer>
       <StyledSeparator />
       <StyledContainer>

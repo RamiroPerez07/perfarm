@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { addProductToCart } from '../../../../actions/cartActions.js';
 
 const StyledCard = styled.div`
   width: 95%;
@@ -52,13 +54,16 @@ const StyledButton = styled.button`
 `;
 
 export const ProductCard = ({productId, productName,productBrand,productDescription,productPrice,productStock, productImg}) => {
+
+  const dispatch = useDispatch()
+
   return (
     <StyledCard>
       <StyledImg imgUrl={productImg} />
       <StyledTitle>{productName}</StyledTitle>
       <StyledBrand>{productBrand}</StyledBrand>
       <StyledPrice>$ {productPrice}</StyledPrice>
-      <StyledButton className='btn-style1'>Agregar</StyledButton>
+      <StyledButton className='btn-style1' onClick={() => dispatch(addProductToCart(productId))}>Agregar</StyledButton>
     </StyledCard>
   )
 }
