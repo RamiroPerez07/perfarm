@@ -10,17 +10,17 @@ import { BurgerContainer } from './components/HeaderComponents/Burger/BurgerCont
 import { Burger } from './components/HeaderComponents/Burger/Burger.jsx';
 import {Hero} from './components/MainComponents/Hero/Hero.jsx';
 import { ProductContainer } from './components/MainComponents/ProductSection/ProductContainer/ProductContainer.jsx';
-import { Products } from './data/products.js';
 import { ProductCard } from './components/MainComponents/ProductSection/ProductCard/ProductCard.jsx';
 import { CartIcon } from './components/HeaderComponents/Cart/CartIcon/CartIcon.jsx';
 import { Cart } from './components/HeaderComponents/Cart/CartFrame/Cart.jsx';
-import { Provider} from 'react-redux';
-import { store } from './redux/store/index.js';
+import { useSelector} from 'react-redux';
 import { ProductFilterFrame } from './components/MainComponents/ProductSection/ProductFilterFrame/ProductFilterFrame.jsx';
 import ProductSection from './components/MainComponents/ProductSection/ProductSection/ProductSection.jsx';
 
 function App() {
 
+  const productFilterState = useSelector(state => state.productFilter)
+  const {shownProducts} = productFilterState
 
   const [openCart, setOpenCart] = useState(false); 
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
@@ -34,7 +34,6 @@ function App() {
 
   return (
     <ThemeProvider theme={themeMode}>
-      <Provider store={store}>
         <GlobalStyle />
         <div className="App">
           <Header>
@@ -52,7 +51,8 @@ function App() {
               <ProductFilterFrame />
               <ProductContainer>
                 {
-                  Products.map( (product) => {
+                  shownProducts.map( (product) => {
+                    console.log(product)
                     return (<ProductCard 
                               productId = {product.id}
                               productName = {product.name}
@@ -70,7 +70,6 @@ function App() {
             </ProductSection>
           </main>
         </div>
-      </Provider>
     </ThemeProvider>
   );
 }

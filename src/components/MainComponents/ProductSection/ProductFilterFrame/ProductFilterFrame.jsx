@@ -1,6 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { sortOptions, priceOptions, stockOptions, shippingOptions } from '../../../../data/filterOptions';
+import {filterProducts, resetFilterProducts} from '../../../../redux/actions/productFilterActions.js';
 
 
 const StyledFrame = styled.div`
@@ -46,21 +48,33 @@ const StyledLabel = styled.label`
 
 export const ProductFilterFrame = () => {
 
-  const state = useSelector(state => state.cart);
-  const {products} = state;
+  //llamo al estado del carro
+  const cartState = useSelector(state => state.cart);
+  const {products} = cartState;
+
+  //llamo al estado del filtro
+  const filterState = useSelector(state => state.productFilter)
+  const dispatch = useDispatch();
 
   const getProductBrands = () => {
     const brands = [...new Set(products.map(product => product.brand))]
     return brands;
   } 
 
+  const handleFilter = (e) => {
+    //en el objeto de filtro del estado, busco la propiedad de filtro y la asigno al valor del select
+    filterState.filterValues[e.target.name] = e.target.value
+    dispatch(filterProducts());
+    dispatch(resetFilterProducts());
+  }
+
   return (
     <StyledFrame>
       <StyledFilterGroup>
         <StyledLabel>Marcas</StyledLabel>
-        <StyledSelect>
+        <StyledSelect name="brand" onChange={handleFilter}>
           <optgroup label="Marcas">
-            <option value="" defaultValue='true' disabled hidden>Seleccioná una marca</option>
+            <option value="" defaultValue={true} disabled hidden>Seleccioná una marca</option>
             {
               getProductBrands().map( brand => {
                 return (
@@ -73,46 +87,61 @@ export const ProductFilterFrame = () => {
       </StyledFilterGroup>
       <StyledFilterGroup>
         <StyledLabel>Precio</StyledLabel>
-        <StyledSelect>
+        <StyledSelect name="price" onChange={handleFilter}>
           <optgroup label="Precio">
             <option value="" defaultValue='true' disabled hidden>Seleccioná rango de precio</option>
-            <option value="1000">Menor a 2000</option>
-            <option value="2000-5000">Entre 2000 y 5000</option>
-            <option value="5000-10000">Entre 5000 y 10000</option>
-            <option value="10000-20000">Entre 10000 y 20000</option>
-            <option value="20000">Mayor a 20000</option>
+            {
+              priceOptions.map(priceOption =>{
+                return (
+                  <option value={priceOption} key={priceOption}>{priceOption}</option>
+                );
+              })
+            }
           </optgroup>
         </StyledSelect>
       </StyledFilterGroup>
       <StyledFilterGroup>
         <StyledLabel>Envío</StyledLabel>
-        <StyledSelect>
+        <StyledSelect name="shipping" onChange={handleFilter}>
           <optgroup label="Envío">
             <option value="" defaultValue='true' disabled hidden>Selecciona opción</option>
-            <option value="true">Gratuito</option>
-            <option value="false">Con cargo</option>
+            {
+              shippingOptions.map(shippingOption => {
+                return(
+                  <option value={shippingOption} key={shippingOption}>{shippingOption}</option>
+                )
+              })
+            }
           </optgroup>
         </StyledSelect>
       </StyledFilterGroup>
       <StyledFilterGroup>
         <StyledLabel>Stock</StyledLabel>
-        <StyledSelect>
+        <StyledSelect name="stock" onChange={handleFilter}>
           <optgroup label="Stock">
             <option value="" defaultValue='true' disabled hidden>Selecciona opción</option>
-            <option value="true">En stock</option>
-            <option value="false">Sin stock</option>
+            {
+              stockOptions.map(stockOption => {
+                return(
+                  <option value={stockOption} key={stockOption}>{stockOption}</option>
+                )
+              })
+            }
           </optgroup>
         </StyledSelect>
       </StyledFilterGroup>
       <StyledFilterGroup>
         <StyledLabel>Ordenar por</StyledLabel>
-        <StyledSelect>
+        <StyledSelect name="sort" onChange={handleFilter}>
           <optgroup label="Criterio">
             <option value="" defaultValue='true' disabled hidden>Selecciona opción</option>
-            <option value="precio-desc">Precio mayor a menor</option>
-            <option value="precio-asc">Precio menor a mayor</option>
-            <option value="nombre-asc">Nombre ascendente</option>
-            <option value="nombre-desc">Nombre descendente</option>
+            {
+              sortOptions.map(sortOption =>{
+                return (
+                  <option value={sortOption} key={sortOption}>{sortOption}</option>
+                )
+              })
+            }
           </optgroup>
         </StyledSelect>
       </StyledFilterGroup>
