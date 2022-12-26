@@ -16,6 +16,8 @@ import { CartIcon } from './components/HeaderComponents/Cart/CartIcon/CartIcon.j
 import { Cart } from './components/HeaderComponents/Cart/CartFrame/Cart.jsx';
 import { Provider} from 'react-redux';
 import { store } from './redux/store/index.js';
+import { ProductFilterFrame } from './components/MainComponents/ProductSection/ProductFilterFrame/ProductFilterFrame.jsx';
+import ProductSection from './components/MainComponents/ProductSection/ProductSection/ProductSection.jsx';
 
 function App() {
 
@@ -46,23 +48,26 @@ function App() {
           </Header>
           <main>
             <Hero />
-            <ProductContainer>
-              {
-                Products.map( (product) => {
-                  return (<ProductCard 
-                            productId = {product.id}
-                            productName = {product.name}
-                            productBrand = {product.brand}
-                            productDescription = {product.description}
-                            productPrice = {product.price}
-                            productStock = {product.stock}
-                            productImg = {product.img_url}
-                            productFreeShipping = {product.free_shipping}
-                            key = {product.id}
-                          />)
-                })
-              }
-            </ProductContainer>
+            <ProductSection>
+              <ProductFilterFrame />
+              <ProductContainer>
+                {
+                  Products.map( (product) => {
+                    return (<ProductCard 
+                              productId = {product.id}
+                              productName = {product.name}
+                              productBrand = {product.brand}
+                              productDescription = {product.description}
+                              productPrice = {product.price}
+                              productStock = {product.stock}
+                              productImg = {product.img_url}
+                              productFreeShipping = {product.free_shipping}
+                              key = {product.id}
+                            />)
+                  })
+                }
+              </ProductContainer>
+            </ProductSection>
           </main>
         </div>
       </Provider>
