@@ -1,7 +1,7 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { addProductToCart } from '../../../../actions/cartActions.js';
+import { addProductToCart } from '../../../../redux/actions/cartActions.js';
 
 const StyledCard = styled.div`
   width: 95%;
@@ -51,11 +51,33 @@ const StyledButton = styled.button`
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 500;
+  filter: ${({stock, quantity}) => (stock === quantity) ? 'grayscale(0.9)' : 'none' };
 `;
 
-export const ProductCard = ({productId, productName,productBrand,productDescription,productPrice,productStock, productImg}) => {
+export const ProductCard = ({productId, productName,productBrand,productDescription,productPrice,productStock, productImg, productFreeShipping}) => {
 
   const dispatch = useDispatch()
+
+  //obtengo el estado y selecciono el del carrito
+  const state = useSelector(state => state.cart);
+  const {cart} = state
+
+
+  const getProductCartQuantity = () => {
+    const cartProduct = cart.find(cartProduct => cartProduct.id === productId);
+    return cartProduct ? cartProduct.quantity : 0;
+  }
+
+  const product = {
+    id: productId,
+    name: productName,
+    brand: productBrand,
+    description: productDescription,
+    price: productPrice,
+    stock: productStock,
+    img_url: productImg,
+    free_shipping: productFreeShipping
+  };
 
   return (
     <StyledCard>
@@ -63,7 +85,7 @@ export const ProductCard = ({productId, productName,productBrand,productDescript
       <StyledTitle>{productName}</StyledTitle>
       <StyledBrand>{productBrand}</StyledBrand>
       <StyledPrice>$ {productPrice}</StyledPrice>
-      <StyledButton className='btn-style1' onClick={() => dispatch(addProductToCart(productId))}>Agregar</StyledButton>
+      <StyledButton className='btn-style1' stock={productStock} quantity={getProductCartQuantity()} onClick={() => dispatch(addProductToCart(product))}>Agregar</StyledButton>
     </StyledCard>
   )
 }

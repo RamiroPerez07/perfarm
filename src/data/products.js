@@ -7,6 +7,7 @@ export const Products = [
     price: 850,
     stock: 5,
     img_url: "./img/products/bleu_de_chanel.png",
+    free_shipping: false,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const Products = [
     price: 1850,
     stock: 3,
     img_url: "./img/products/mon-guerlain.png",
+    free_shipping: false,
   },
   {
     id: 3,
@@ -25,5 +27,6 @@ export const Products = [
     price: 1250,
     stock: 10,
     img_url: "./img/products/shalimar.png",
+    free_shipping: true,
   },
 ]

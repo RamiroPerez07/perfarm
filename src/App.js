@@ -15,7 +15,7 @@ import { ProductCard } from './components/MainComponents/ProductSection/ProductC
 import { CartIcon } from './components/HeaderComponents/Cart/CartIcon/CartIcon.jsx';
 import { Cart } from './components/HeaderComponents/Cart/CartFrame/Cart.jsx';
 import { Provider} from 'react-redux';
-import { store } from './store/index.js';
+import { store } from './redux/store/index.js';
 
 function App() {
 
@@ -57,6 +57,7 @@ function App() {
                             productPrice = {product.price}
                             productStock = {product.stock}
                             productImg = {product.img_url}
+                            productFreeShipping = {product.free_shipping}
                             key = {product.id}
                           />)
                 })

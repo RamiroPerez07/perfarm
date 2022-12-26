@@ -1,6 +1,7 @@
 import React from 'react';
 import {BsCartFill} from 'react-icons/bs';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const StyledCartIConContainer = styled.div`
   height: 20px;
@@ -34,10 +35,20 @@ const StyledCartCounter = styled.div`
 `;
 
 export const CartIcon = ({openCart, setOpenCart}) => {
+
+  const state = useSelector(state => state.cart);
+  const {cart} = state;
+
+  const getTotalQuantity = () => {
+    return cart.reduce((acc, cartProduct) => {
+      return acc + cartProduct.quantity;
+    },0)
+  };
+
   return (
     <StyledCartIConContainer openCart={openCart} onClick={() => setOpenCart(!openCart) }>
       <StyledCartIcon />
-      <StyledCartCounter>5</StyledCartCounter>
+      <StyledCartCounter>{getTotalQuantity()}</StyledCartCounter>
     </StyledCartIConContainer>
   )
 }

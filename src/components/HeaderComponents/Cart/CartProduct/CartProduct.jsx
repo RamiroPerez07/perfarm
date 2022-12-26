@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {FaTrash} from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { addProductToCart, subtractProductFromCart, removeProductFromCart } from '../../../../redux/actions/cartActions.js';
 
 const StyledCard = styled.div`
   width: 100%;
@@ -88,6 +90,7 @@ const StyledBtnIncrementQuantity = styled.button`
   font-size: 1rem;
   font-weight: 800;
   border-radius: 8px;
+  filter: ${({quantity, stock}) => (quantity === stock ? 'grayscale(0.9)' : 'none')};
 `;
 
 const StyledQuantity = styled.span`
@@ -95,18 +98,33 @@ const StyledQuantity = styled.span`
   font-weight: 800;
 `;
 
-export const CartProduct = ({productName, productImg, productBrand, productPrice}) => {
+export const CartProduct = ({productId, productDescription, productName, productImg, productBrand, productPrice, productQuantity, productStock, productFreeShipping}) => {
+  
+  const dispatch = useDispatch();
+  
+  const product = {
+    id: productId,
+    name: productName,
+    img_url: productImg,
+    brand: productBrand,
+    price: productPrice,
+    description: productDescription,
+    quantity: productQuantity,
+    stock: productStock,
+    free_shipping: productFreeShipping,
+  }
+
   return (
     <StyledCard>
       <StyledImg urlImg = {productImg}></StyledImg>
       <StyledName>{productName}</StyledName>
       <StyledBrand>{productBrand}</StyledBrand>
       <StyledPrice>$ {productPrice}</StyledPrice>
-      <StyledTrash />
+      <StyledTrash onClick={() => dispatch(removeProductFromCart(product))} />
       <StyledControllerContainer>
-        <StyledBtnDecrementQuantity className="btn-style1">-</StyledBtnDecrementQuantity>
-        <StyledQuantity>1</StyledQuantity>
-        <StyledBtnIncrementQuantity className="btn-style1">+</StyledBtnIncrementQuantity>
+        <StyledBtnDecrementQuantity className="btn-style1" onClick={() => dispatch(subtractProductFromCart(product))}>-</StyledBtnDecrementQuantity>
+        <StyledQuantity>{productQuantity}</StyledQuantity>
+        <StyledBtnIncrementQuantity className="btn-style1" quantity={productQuantity} stock={productStock} onClick={() => dispatch(addProductToCart(product))}>+</StyledBtnIncrementQuantity>
       </StyledControllerContainer>
     </StyledCard>
   )

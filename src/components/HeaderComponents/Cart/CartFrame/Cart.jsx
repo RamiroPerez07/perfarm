@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { CartProduct } from '../CartProduct/CartProduct';
+import { removeAllProductsFromCart } from '../../../../redux/actions/cartActions';
 
 
 const StyledCart = styled.div`
@@ -19,6 +20,7 @@ const StyledCart = styled.div`
   align-content: start;
   align-items: start;
   justify-items: center;
+  grid-auto-rows: min-content;
   gap: 1em;
   overflow-y: scroll;
   transform: ${({ openCart }) => openCart ? 'translateX(0%)' : 'translateX(100%)'};
@@ -119,7 +121,24 @@ const StyledBtn = styled.button`
 
 export const Cart = ({openCart, setOpenCart}) => {
 
+  const dispatch = useDispatch();
+
   const state = useSelector(state => state.cart);
+  const {cart,shippingCost} = state;
+
+  const calculateSubtotal = () => {
+    return cart.reduce((acc, cartProduct) => {
+      return acc + cartProduct.price * cartProduct.quantity;
+    },0)
+  }
+
+  const calculateShippingCost = () => {
+    if (cart.length === 0) return 0; //si no hay productos, que el costo sea 0.
+    return (cart.some(cartProduct => !cartProduct.free_shipping)) ? shippingCost : 0;
+  }
+
+  //me genero una funcion de total por si el dia de mañana hay que agregar otras cosas. Ej: descuentos, etc
+  const calculateTotal = () => calculateSubtotal() + calculateShippingCost();
 
   return (
     <StyledCart openCart={openCart} setOpenCart={setOpenCart}>
@@ -128,12 +147,18 @@ export const Cart = ({openCart, setOpenCart}) => {
       <StyledProductContainer>
         {
           state.cart.map(product => {
+            console.log("carrito ==>", product)
             return (
               <CartProduct 
+              productId = {product.id}
+              productDescription = {product.description}
               productImg= {product.img_url}
               productName = {product.name}
               productBrand = {product.brand}
               productPrice = {product.price}
+              productQuantity = {product.quantity}
+              productStock = {product.stock}
+              productFreeShipping = {product.free_shipping}
               key = {product.id}
             />
             )
@@ -144,17 +169,17 @@ export const Cart = ({openCart, setOpenCart}) => {
       <StyledSeparator />
       <StyledContainer>
         <StyledSubtitles>Subtotal</StyledSubtitles>
-        <StyledSpan>$2000</StyledSpan>
+        <StyledSpan>${calculateSubtotal()}</StyledSpan>
         <StyledSubtitles>Envío</StyledSubtitles>
-        <StyledSpan>$300</StyledSpan>
+        <StyledSpan>${calculateShippingCost()}</StyledSpan>
       </StyledContainer>
       <StyledSeparator />
       <StyledContainer>
         <StyledSubtitles>Total</StyledSubtitles>
-        <StyledSpan>$2300</StyledSpan>
+        <StyledSpan>${calculateTotal()}</StyledSpan>
       </StyledContainer>
       <StyledBtn className="btn-style1">Comprar</StyledBtn>
-      <StyledBtn className="btn-style2">Limpiar Carrito</StyledBtn>
+      <StyledBtn className="btn-style2" onClick = {()=> dispatch(removeAllProductsFromCart())}>Limpiar Carrito</StyledBtn>
     </StyledCart>
   )
 }
