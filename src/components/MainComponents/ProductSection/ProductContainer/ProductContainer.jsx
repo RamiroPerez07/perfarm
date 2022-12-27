@@ -17,6 +17,13 @@ const StyledSection = styled.section`
   gap: 1em;
 `;
 
+const StyledMessage = styled.p`
+  font-size: 1rem;
+  font-weight: 500;
+  color: ${({theme}) => theme.secondary};
+  text-align: center;
+`;
+
 export const ProductContainer = ({children}) => {
   //llamo al estado del filtro
   const filterState = useSelector(state => state.productFilter)
@@ -26,7 +33,7 @@ export const ProductContainer = ({children}) => {
   return (
     <StyledSection>
       {children}
-      {!shownProducts.length && <p>No existen resultados que coincidan con la búsqueda.</p>}
+      {!shownProducts.length && <StyledMessage>No existen resultados que coincidan con la búsqueda.</StyledMessage>}
     </StyledSection>
   )
 }
