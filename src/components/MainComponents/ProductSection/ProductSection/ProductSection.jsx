@@ -10,10 +10,9 @@ const StyledSection = styled.section`
   align-items: start;
 `;
 
-const ProductSection = ({children}) => {
+export const ProductSection = ({children}) => {
   return (
     <StyledSection>{children}</StyledSection>
   )
 }
 
-export default ProductSection

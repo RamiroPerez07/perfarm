@@ -15,7 +15,8 @@ import { CartIcon } from './components/HeaderComponents/Cart/CartIcon/CartIcon.j
 import { Cart } from './components/HeaderComponents/Cart/CartFrame/Cart.jsx';
 import { useSelector} from 'react-redux';
 import { ProductFilterFrame } from './components/MainComponents/ProductSection/ProductFilterFrame/ProductFilterFrame.jsx';
-import ProductSection from './components/MainComponents/ProductSection/ProductSection/ProductSection.jsx';
+import {ProductSection} from './components/MainComponents/ProductSection/ProductSection/ProductSection.jsx';
+import {Modal} from './components/Modals/Modal.jsx';
 
 function App() {
 
@@ -69,6 +70,7 @@ function App() {
               </ProductContainer>
             </ProductSection>
           </main>
+          <Modal />
         </div>
     </ThemeProvider>
   );

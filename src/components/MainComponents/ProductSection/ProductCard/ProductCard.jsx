@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { addProductToCart } from '../../../../redux/actions/cartActions.js';
+import { hideModal, showModal } from '../../../../redux/actions/modalActions.js';
 
 const StyledCard = styled.div`
   width: 95%;
@@ -80,13 +81,24 @@ export const ProductCard = ({productId, productName,productBrand,productDescript
     free_shipping: productFreeShipping
   };
 
+  const addProduct = (product) => {
+    const quantity = getProductCartQuantity();
+    if (product.stock <= quantity){
+      dispatch(showModal(true, `¡No hay stock suficiente del producto ${product.name}!`));
+      return;
+    }  
+    dispatch(addProductToCart(product));
+    dispatch(showModal(false, `¡Producto ${product.name} agregado al carrito!`));
+    setTimeout(() => dispatch(hideModal()),1500);
+  }
+
   return (
     <StyledCard>
       <StyledImg imgUrl={productImg} />
       <StyledTitle>{productName}</StyledTitle>
       <StyledBrand>{productBrand}</StyledBrand>
       <StyledPrice>$ {productPrice}</StyledPrice>
-      <StyledButton className='btn-style1' stock={productStock} quantity={getProductCartQuantity()} onClick={() => dispatch(addProductToCart(product))}>Agregar</StyledButton>
+      <StyledButton className='btn-style1' stock={productStock} quantity={getProductCartQuantity()} onClick={() => addProduct(product)}>Agregar</StyledButton>
     </StyledCard>
   )
 }
