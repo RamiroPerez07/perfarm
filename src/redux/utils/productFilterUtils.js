@@ -26,7 +26,9 @@ export const filterProductsByPrice = (filterValues, products) => {
     case "Menos de $2000":
       return products.filter(product => product.price <= 2000);
     case "Entre $2000 y $5000":
-      return products.filter(product => product.price >=2000 && product.price <=10000);
+      return products.filter(product => product.price >=2000 && product.price <=5000);
+    case "Entre $5000 y $10000":
+      return products.filter(product => product.price >= 5000 && product.price <=10000);
     case "Entre $10000 y $20000":
       return products.filter(product => product.price >= 10000 && product.price <=20000);
     case "Mas de $20000": 
