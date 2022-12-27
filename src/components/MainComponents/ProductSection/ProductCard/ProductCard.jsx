@@ -38,6 +38,7 @@ const StyledBrand = styled.p`
   text-align: center;
   font-weight: 100;
   font-size: 1rem;
+  font-style: italic;
 `;
 
 const StyledPrice = styled.h4`
