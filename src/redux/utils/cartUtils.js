@@ -3,10 +3,10 @@ export const addProduct = (cartProducts, newProduct) => {
   //verifico si el producto esta en el carrito, si lo encuentra me devuelve el objeto, sino retorna undefined
   const existingProductItem = cartProducts.find(cartProduct => cartProduct.id === newProduct.id);
 
-  console.log("producto existente ==> ",existingProductItem);
 
   //si el producto existe adiciona la  cantidad = cantidad + 1
   if (existingProductItem){
+    //antes chequeo si la cantidad no supera el stock de trabajo
     if (existingProductItem.quantity === existingProductItem.stock){
       alert(`Producto ${existingProductItem.name} fuera de stock!`);
       return [...cartProducts];
@@ -19,6 +19,10 @@ export const addProduct = (cartProducts, newProduct) => {
   }
 
   //si el producto no esta en el carrito, que devuelva todos los productos del carro + el producto nuevo con cantidad = 1
+  if (newProduct.stock === 0){
+    alert(`Producto ${newProduct.name} fuera de stock!`);
+    return [...cartProducts];
+  }
   return [...cartProducts, {...newProduct, quantity: 1}];
 }
 

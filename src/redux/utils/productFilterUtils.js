@@ -9,13 +9,13 @@ export const filterProductsByCategory = (productList, category) => {
 export const sortProductsByParameter = (filterValue, products) => {
   switch(filterValue){
     case "Precio descendente":
-      return products.sort((a,b) => b.price - a.price )
+      return products.sort((a,b) => b.price - a.price );
     case "Precio ascendente":
-      return products.sort((a,b) => a.price - b.price)
+      return products.sort((a,b) => a.price - b.price);
     case "Nombre ascendente":
-      return products.sort((a,b) => a.name - b.price )
+      return products.sort((a,b) => a.name.localeCompare(b.name));
     case "Nombre descendente":
-      return products.sort((a,b) => b.name - a.price )
+      return products.sort((a,b) => b.name.localeCompare(a.name));
     default:
       return products;
   }
