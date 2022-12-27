@@ -15,7 +15,7 @@ export const Products = [
     brand: "Paco Rabanne" ,
     description: "descrip prod 2",
     price: 1850,
-    stock: 3,
+    stock: 0,
     img_url: "./img/products/mon-guerlain.png",
     free_shipping: false,
   },

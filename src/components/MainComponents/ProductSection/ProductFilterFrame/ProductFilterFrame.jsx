@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { sortOptions, priceOptions, stockOptions, shippingOptions } from '../../../../data/filterOptions';
-import {filterProducts, resetFilterProducts} from '../../../../redux/actions/productFilterActions.js';
+import {filterProducts} from '../../../../redux/actions/productFilterActions.js';
 
 
 const StyledFrame = styled.div`
@@ -62,19 +62,21 @@ export const ProductFilterFrame = () => {
   } 
 
   const handleFilter = (e) => {
-    //en el objeto de filtro del estado, busco la propiedad de filtro y la asigno al valor del select
-    filterState.filterValues[e.target.name] = e.target.value
-    dispatch(filterProducts());
-    dispatch(resetFilterProducts());
+    //genero un objeto de filtrado
+    const filterParameters = {...filterState.filterValues} //me genero una copia del estado (CONCEPTO DE INMUTABILIDAD DEL ESTADO).
+    const shownProducts = [...filterState.products];
+    filterParameters[e.target.name] = e.target.value  //en esta funcion actualizo los parametros de busqueda.
+    dispatch(filterProducts(filterParameters, shownProducts)); //le paso a la funcion los parametros de filtrado.
   }
 
   return (
     <StyledFrame>
       <StyledFilterGroup>
         <StyledLabel>Marcas</StyledLabel>
-        <StyledSelect name="brand" onChange={handleFilter}>
+        <StyledSelect defaultValue="All" name="brand" onChange={handleFilter}>
           <optgroup label="Marcas">
-            <option value="" defaultValue={true} disabled hidden>Seleccioná una marca</option>
+            <option value="All" disabled hidden>Seleccioná una marca</option>
+            <option value="All">Todas</option>
             {
               getProductBrands().map( brand => {
                 return (
@@ -87,9 +89,9 @@ export const ProductFilterFrame = () => {
       </StyledFilterGroup>
       <StyledFilterGroup>
         <StyledLabel>Precio</StyledLabel>
-        <StyledSelect name="price" onChange={handleFilter}>
+        <StyledSelect defaultValue="All" name="price" onChange={handleFilter}>
           <optgroup label="Precio">
-            <option value="" defaultValue='true' disabled hidden>Seleccioná rango de precio</option>
+            <option value="All" disabled hidden>Seleccioná rango de precio</option>
             {
               priceOptions.map(priceOption =>{
                 return (
@@ -102,9 +104,9 @@ export const ProductFilterFrame = () => {
       </StyledFilterGroup>
       <StyledFilterGroup>
         <StyledLabel>Envío</StyledLabel>
-        <StyledSelect name="shipping" onChange={handleFilter}>
+        <StyledSelect defaultValue="All" name="shipping" onChange={handleFilter}>
           <optgroup label="Envío">
-            <option value="" defaultValue='true' disabled hidden>Selecciona opción</option>
+            <option value="All" defaultValue='true' disabled hidden>Seleccioná una opción</option>
             {
               shippingOptions.map(shippingOption => {
                 return(
@@ -117,9 +119,9 @@ export const ProductFilterFrame = () => {
       </StyledFilterGroup>
       <StyledFilterGroup>
         <StyledLabel>Stock</StyledLabel>
-        <StyledSelect name="stock" onChange={handleFilter}>
+        <StyledSelect defaultValue="All" name="stock" onChange={handleFilter}>
           <optgroup label="Stock">
-            <option value="" defaultValue='true' disabled hidden>Selecciona opción</option>
+            <option value="All" defaultValue='true' disabled hidden>Seleccioná una opción</option>
             {
               stockOptions.map(stockOption => {
                 return(
@@ -132,9 +134,9 @@ export const ProductFilterFrame = () => {
       </StyledFilterGroup>
       <StyledFilterGroup>
         <StyledLabel>Ordenar por</StyledLabel>
-        <StyledSelect name="sort" onChange={handleFilter}>
+        <StyledSelect defaultValue="All" name="sort" onChange={handleFilter}>
           <optgroup label="Criterio">
-            <option value="" defaultValue='true' disabled hidden>Selecciona opción</option>
+            <option value="All" disabled hidden>Seleccioná un criterio</option>
             {
               sortOptions.map(sortOption =>{
                 return (

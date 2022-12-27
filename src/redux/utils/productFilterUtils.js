@@ -9,13 +9,13 @@ export const filterProductsByCategory = (productList, category) => {
 export const sortProductsByParameter = (filterValue, products) => {
   switch(filterValue){
     case "Precio descendente":
-      return products.sort((a,b) => a.price < b.price ? 1 : -1)
+      return products.sort((a,b) => b.price - a.price )
     case "Precio ascendente":
-      return products.sort((a,b) => a.price > b.price ? 1 : -1)
+      return products.sort((a,b) => a.price - b.price)
     case "Nombre ascendente":
-      return products.sort((a,b) => a.name < b.price ? 1 : -1)
+      return products.sort((a,b) => a.name - b.price )
     case "Nombre descendente":
-      return products.sort((a,b) => a.name > b.price ? 1 : -1)
+      return products.sort((a,b) => b.name - a.price )
     default:
       return products;
   }
@@ -38,12 +38,10 @@ export const filterProductsByPrice = (filterValues, products) => {
 
 export const filterProductsByStock = (filterValues, products) => {
   switch(filterValues){
-    case "En Stock":{
+    case "En Stock":
       return products.filter(product => product.stock > 0);
-    }
-    case "Sin Stock":{
+    case "Sin Stock":
       return products.filter(product => product.stock === 0);
-    }
     default:
       return products;
   }
@@ -51,28 +49,31 @@ export const filterProductsByStock = (filterValues, products) => {
 
 export const filterProductsByShippingCost = (filterValues, products) => {
   switch(filterValues){
-    case "Envío gratuito":{
+    case "Envío gratuito":
       return products.filter(product => product.free_shipping === true);
-    }
-    case "Envío con cargo":{
+    case "Envío con cargo":
       return products.filter(product => product.free_shipping === false);
-    }
     default:
       return products
   }
 }
 
 export const filterProductByBrand = (filterValues, products) => {
-  return products.filter(product => product.brand === filterValues);
+  return filterValues !== "All" ? products.filter(product => product.brand === filterValues) : products;
 }
 
 export const filterProducts = (filterValues, products) => {
   let productList = [...products]; //genero una copia de los productos
   productList = sortProductsByParameter(filterValues.sort, productList);
+  console.log("lista ordenada ==>",productList);
   productList = filterProductsByPrice(filterValues.price, productList);
+  console.log("filtrado por precio ==>", productList);
   productList = filterProductsByStock(filterValues.stock, productList);
+  console.log("filtrado por stock ==>", productList);
   productList = filterProductsByShippingCost(filterValues.shipping, productList);
+  console.log("filtrado por costo de envio",productList);
   productList = filterProductByBrand(filterValues.brand, productList);
+  console.log("filtrado por marca", productList);
   return productList;
 }
 
