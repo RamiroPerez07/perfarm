@@ -25,6 +25,7 @@ const StyledModalTxt = styled.p`
   color: #ffffff;
   font-size: 1rem;
   font-weight: 500;
+  text-align: center;
 `;
 
 export const Modal = () => {
