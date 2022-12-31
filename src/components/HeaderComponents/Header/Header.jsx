@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import React from "react";
+import React, {useState} from "react";
+import { Navbar } from "../Navbar/Navbar";
+import { ThemeToggleBtn } from "../ThemeToggleBtn/ThemeToggleBtn";
+import { CartIcon } from "../Cart/CartIcon/CartIcon";
+import { Cart } from "../Cart/CartFrame/Cart";
+import { BurgerContainer } from "../Burger/BurgerContainer";
+import { Burger } from "../Burger/Burger";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -8,7 +14,7 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-items: center;
   background-color: ${({theme}) => theme.primary};
-  box-shadow: 0px 1px 5px -4px ${(theme) => theme.secondary};
+  box-shadow: 0px 1px 5px -4px ${({theme}) => theme.secondary};
   position: fixed;
   top: 0px;
   z-index: 1;
@@ -27,11 +33,26 @@ const StyledHeaderContent = styled.div`
   justify-content: end;
 `;
 
-export const Header = ({children}) => {
+export const Header = (props) => {
+  const {
+    theme,
+    toggleTheme,
+  } = props
+
+  //estado del carrito, uso variables de estado
+  const [openCart, setOpenCart] = useState(false); 
+  const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
+
   return (
     <StyledHeader>
       <StyledHeaderContent>
-        {children}
+        <Navbar openBurgerMenu={openBurgerMenu} />
+        <ThemeToggleBtn theme={theme} toggleTheme={toggleTheme} />
+        <CartIcon openCart={openCart} setOpenCart={setOpenCart} />
+        <Cart openCart={openCart} setOpenCart={setOpenCart} />
+        <BurgerContainer>
+          <Burger openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={setOpenBurgerMenu} />
+        </BurgerContainer>
       </StyledHeaderContent>
     </StyledHeader>
   )

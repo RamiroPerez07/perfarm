@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ProductFilterFrame } from '../ProductFilterFrame/ProductFilterFrame';
+import { ProductContainer } from '../ProductContainer/ProductContainer';
+import { useSelector } from 'react-redux';
+import { ProductCard } from '../ProductCard/ProductCard';
+
 
 const StyledSection = styled.section`
   width: 100%;
@@ -10,9 +15,30 @@ const StyledSection = styled.section`
   align-items: start;
 `;
 
-export const ProductSection = ({children}) => {
+export const ProductSection = () => {
+  const productFilterState = useSelector(state => state.productFilter)
+  const {shownProducts} = productFilterState
   return (
-    <StyledSection>{children}</StyledSection>
+    <StyledSection>
+      <ProductFilterFrame />
+      <ProductContainer>
+        {
+          shownProducts.map( (product) => {
+            return (<ProductCard 
+                      productId = {product.id}
+                      productName = {product.name}
+                      productBrand = {product.brand}
+                      productDescription = {product.description}
+                      productPrice = {product.price}
+                      productStock = {product.stock}
+                      productImg = {product.img_url}
+                      productFreeShipping = {product.free_shipping}
+                      key = {product.id}
+                    />)
+          })
+        }
+      </ProductContainer>
+    </StyledSection>
   )
 }
 

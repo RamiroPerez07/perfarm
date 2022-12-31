@@ -14,6 +14,7 @@ const StyledModal = styled.div`
   transition: all 0.2s linear;
   border-radius: 10px;
   transition: bottom 0.3s linear;
+  z-index: 2;
 
   &.showModal{
     bottom: 10px;
