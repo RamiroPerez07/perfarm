@@ -2,10 +2,20 @@
 import React from 'react';
 import { bool, func } from 'prop-types';
 import styled from "styled-components";
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { toggleBurgerMenu } from '../../../redux/actions/menuManagerActions';
 
-export const Burger = ({openBurgerMenu, setOpenBurgerMenu}) => {
+export const Burger = () => {
+
+  const dispatch = useDispatch();
+
+  //llamo al estado del menu
+  const menuManagerState = useSelector(state => state.menuManager);
+  const {showBurgerMenu} = menuManagerState;
+
   return (
-    <StyledBurger openBurgerMenu={openBurgerMenu} onClick={()=>setOpenBurgerMenu(!openBurgerMenu)}>
+    <StyledBurger showBurgerMenu={showBurgerMenu} onClick={()=>dispatch(toggleBurgerMenu())}>
       <div />
       <div />
       <div />
@@ -45,13 +55,13 @@ const StyledBurger = styled.button`
     transform-origin: 1px;
   }
   div:first-child{
-    transform: ${({openBurgerMenu}) => openBurgerMenu ? 'rotateZ(45deg)' : 'rotateZ(0)' };
+    transform: ${({showBurgerMenu}) => showBurgerMenu ? 'rotateZ(45deg)' : 'rotateZ(0)' };
   }
   div:nth-child(2){
-    opacity: ${({openBurgerMenu}) => openBurgerMenu ? '0' : '1' };
-    transform: ${ ({openBurgerMenu}) => openBurgerMenu ? 'translateX(20px)' : 'translateX(0)' };
+    opacity: ${({showBurgerMenu}) => showBurgerMenu ? '0' : '1' };
+    transform: ${ ({showBurgerMenu}) => showBurgerMenu ? 'translateX(20px)' : 'translateX(0)' };
   }
   div:nth-child(3){
-    transform: ${ ({openBurgerMenu}) => openBurgerMenu ? 'rotateZ(-45deg)' : 'rotateZ(0)' };
+    transform: ${ ({showBurgerMenu}) => showBurgerMenu ? 'rotateZ(-45deg)' : 'rotateZ(0)' };
   }
 `;

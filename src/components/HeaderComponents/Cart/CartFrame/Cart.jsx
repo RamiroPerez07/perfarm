@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { CartProduct } from '../CartProduct/CartProduct';
 import { removeAllProductsFromCart } from '../../../../redux/actions/cartActions';
+import { toggleCart } from '../../../../redux/actions/menuManagerActions';
 
 
 const StyledCart = styled.div`
@@ -23,7 +24,7 @@ const StyledCart = styled.div`
   grid-auto-rows: min-content;
   gap: 1em;
   overflow-y: scroll;
-  transform: ${({ openCart }) => openCart ? 'translateX(0%)' : 'translateX(100%)'};
+  transform: ${({ showCart }) => showCart ? 'translateX(0%)' : 'translateX(100%)'};
   transition: all 0.2s linear;
 
   &::-webkit-scrollbar{
@@ -119,9 +120,13 @@ const StyledBtn = styled.button`
   width: 50%;
 `;
 
-export const Cart = ({openCart, setOpenCart}) => {
+export const Cart = () => {
 
   const dispatch = useDispatch();
+
+  //llamo al estado del menu
+  const menuManagerState = useSelector(state => state.menuManager);
+  const {showCart} = menuManagerState;
 
   const state = useSelector(state => state.cart);
   const {cart,shippingCost} = state;
@@ -141,8 +146,8 @@ export const Cart = ({openCart, setOpenCart}) => {
   const calculateTotal = () => calculateSubtotal() + calculateShippingCost();
 
   return (
-    <StyledCart openCart={openCart} setOpenCart={setOpenCart}>
-      <StyledCloseCartBtn onClick={() => setOpenCart(!openCart)} />
+    <StyledCart showCart={showCart}>
+      <StyledCloseCartBtn onClick={() => dispatch(toggleCart())} />
       <StyledH2>Tus productos</StyledH2>
       <StyledProductContainer>
         {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, {useState} from "react";
+import React from "react";
 import { Navbar } from "../Navbar/Navbar";
 import { ThemeToggleBtn } from "../ThemeToggleBtn/ThemeToggleBtn";
 import { CartIcon } from "../Cart/CartIcon/CartIcon";
@@ -39,19 +39,16 @@ export const Header = (props) => {
     toggleTheme,
   } = props
 
-  //estado del carrito, uso variables de estado
-  const [openCart, setOpenCart] = useState(false); 
-  const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
 
   return (
     <StyledHeader>
       <StyledHeaderContent>
-        <Navbar openBurgerMenu={openBurgerMenu} />
+        <Navbar />
         <ThemeToggleBtn theme={theme} toggleTheme={toggleTheme} />
-        <CartIcon openCart={openCart} setOpenCart={setOpenCart} />
-        <Cart openCart={openCart} setOpenCart={setOpenCart} />
+        <CartIcon />
+        <Cart />
         <BurgerContainer>
-          <Burger openBurgerMenu={openBurgerMenu} setOpenBurgerMenu={setOpenBurgerMenu} />
+          <Burger />
         </BurgerContainer>
       </StyledHeaderContent>
     </StyledHeader>

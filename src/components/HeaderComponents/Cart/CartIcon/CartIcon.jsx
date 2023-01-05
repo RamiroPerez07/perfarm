@@ -2,6 +2,8 @@ import React from 'react';
 import {BsCartFill} from 'react-icons/bs';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { toggleCart } from '../../../../redux/actions/menuManagerActions';
 
 const StyledCartIConContainer = styled.div`
   height: 20px;
@@ -34,7 +36,13 @@ const StyledCartCounter = styled.div`
   font-weight: 400;
 `;
 
-export const CartIcon = ({openCart, setOpenCart}) => {
+export const CartIcon = () => {
+
+  const dispatch = useDispatch();
+
+  //llamo al estado del menu
+  const menuManagerState = useSelector(state => state.menuManager);
+  const {showCart} = menuManagerState;
 
   const state = useSelector(state => state.cart);
   const {cart} = state;
@@ -46,7 +54,7 @@ export const CartIcon = ({openCart, setOpenCart}) => {
   };
 
   return (
-    <StyledCartIConContainer openCart={openCart} onClick={() => setOpenCart(!openCart) }>
+    <StyledCartIConContainer showCart={showCart} onClick={() => dispatch(toggleCart()) }>
       <StyledCartIcon />
       <StyledCartCounter>{getTotalQuantity()}</StyledCartCounter>
     </StyledCartIConContainer>

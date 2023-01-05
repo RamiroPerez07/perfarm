@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const StyledNavbar = styled.nav`
   display: grid;
@@ -19,7 +20,7 @@ const StyledNavbar = styled.nav`
     place-content: center;
     transition: transform 0.3s ease-in-out;
     box-shadow: 0px 1px 5px -4px ${({theme}) => theme.secondary};
-    transform: ${({ openBurgerMenu }) => openBurgerMenu ? 'translateX(0)' : 'translateX(-100%)'};
+    transform: ${({ showBurgerMenu }) => showBurgerMenu ? 'translateX(0)' : 'translateX(-100%)'};
     background-color:  ${({theme}) => theme.primary};
     z-index: 2;
   }
@@ -41,12 +42,15 @@ const StyledLink = styled(NavLink)`
 
 `;
 
-export const Navbar = ({openBurgerMenu}) => {
+export const Navbar = () => {
 
+  //llamo al estado del menu
+  const menuManagerState = useSelector(state => state.menuManager);
+  const {showBurgerMenu} = menuManagerState;
 
   return (
     <>
-      <StyledNavbar openBurgerMenu={openBurgerMenu}>
+      <StyledNavbar showBurgerMenu={showBurgerMenu}>
         <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/'}>Home</StyledLink>
         <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/productos'}>Products</StyledLink>
         <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/contacto'}>Contact</StyledLink>
