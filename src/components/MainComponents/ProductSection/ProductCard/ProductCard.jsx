@@ -85,12 +85,12 @@ export const ProductCard = ({productId, productName,productBrand,productDescript
     const quantity = getProductCartQuantity();
     if (product.stock <= quantity){
       dispatch(showModal(true, `¡No hay stock suficiente del producto ${product.name}!`));
-      setTimeout(() => dispatch(hideModal()),1500);
+      setTimeout(() => dispatch(hideModal()),3000);
       return;
     }  
     dispatch(addProductToCart(product));
     dispatch(showModal(false, `¡Producto ${product.name} agregado al carrito!`));
-    setTimeout(() => dispatch(hideModal()),1500);
+    setTimeout(() => dispatch(hideModal()),3000);
   }
 
   return (

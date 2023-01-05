@@ -11,14 +11,13 @@ const StyledModal = styled.div`
   display: grid;
   padding: 10px;
   place-items: center;
-  transition: all 0.2s linear;
   border-radius: 10px;
-  transition: bottom 0.3s linear;
+  transition: all 0.3s cubic-bezier(0,.56,0,.86);
   z-index: 2;
 
   &.showModal{
-    bottom: 10px;
-    transition: bottom 0.3s linear;
+    bottom: 15px;
+    transition: all 0.3s cubic-bezier(0,.56,0,.86);
   }
 `;
 
