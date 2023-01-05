@@ -8,7 +8,8 @@ const StyledSection = styled.section`
   margin-top: 60px;
   min-height: min(1020px, calc(100vh - 60px));
   display: grid;
-  place-content: center;
+  align-content: center;
+  justify-content: stretch;
   place-items: center;
   gap: 3em;
 `;
