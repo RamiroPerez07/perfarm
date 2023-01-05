@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledMessage = styled.p`
@@ -30,12 +31,23 @@ const StyledImg404 = styled.div`
   background-position: center center;
 `;
 
+const StyledBtn = styled.button`
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 400;
+`;
+
 export const Error404 = () => {
+
+  const navigate = useNavigate();
+
   return (
     <main>
       <StyledErrorSection>
         <StyledMessage>¡Ups! Parece que no se pudo encontrar la página que buscás...</StyledMessage>
         <StyledImg404 />
+        <StyledBtn className="btn-style1" onClick={() => navigate('/')}>Ir al Inicio</StyledBtn>
       </StyledErrorSection>
     </main>
   )

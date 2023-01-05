@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const StyledNavbar = styled.nav`
   display: grid;
@@ -24,15 +25,20 @@ const StyledNavbar = styled.nav`
   }
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled(NavLink)`
   color: ${({theme}) => theme.secondary };
   font-weight: 500;
   font-size: 1.1rem;
   text-align: center;
 
+  &.active{
+    color: ${({theme}) => theme.terciary };
+  }
+
   &:hover{
     color: ${({theme}) => theme.terciary };
   }
+
 `;
 
 export const Navbar = ({openBurgerMenu}) => {
@@ -41,9 +47,9 @@ export const Navbar = ({openBurgerMenu}) => {
   return (
     <>
       <StyledNavbar openBurgerMenu={openBurgerMenu}>
-        <StyledLink href="#">Home</StyledLink>
-        <StyledLink href="#">Products</StyledLink>
-        <StyledLink href="#">Contact</StyledLink>
+        <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/'}>Home</StyledLink>
+        <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/productos'}>Products</StyledLink>
+        <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/contacto'}>Contact</StyledLink>
       </StyledNavbar>
     </>
   )

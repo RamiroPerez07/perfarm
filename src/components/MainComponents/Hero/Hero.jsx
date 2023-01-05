@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledSection = styled.section`
@@ -44,12 +45,13 @@ const StyledHeroDescription = styled.p`
 `;
 
 export const Hero = () => {
+  const navigate = useNavigate();
   return (
     <StyledSection>
       <StyledImg />
       <StyledH1>Perfarm</StyledH1>
       <StyledHeroDescription>Especialistas en líneas de perfumería</StyledHeroDescription>
-      <StyledBtn className='btn-style1'>Productos</StyledBtn>
+      <StyledBtn onClick={()=>navigate('/productos')} className='btn-style1'>Productos</StyledBtn>
     </StyledSection>
   )
 };
