@@ -41,7 +41,7 @@ const StyledImg = styled.div`
 const StyledHeroDescription = styled.p`
   width: 90%;
   font-size: 1.4rem;
-  font-weight: 300;
+  font-weight: 400;
   text-align: center;
   color: ${({theme}) => theme.secondary };
 `;
