@@ -8,11 +8,21 @@ import { ProductCard } from '../ProductCard/ProductCard';
 
 const StyledSection = styled.section`
   width: 100%;
+  margin-top: 100px;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   justify-items: center;
   align-items: start;
+  gap: 2em;
+`;
+
+const StyledTitle = styled.h2`
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: ${({theme})=>theme.secondary};
+  margin-bottom: 25px;
+  text-align: center;
 `;
 
 export const ProductSection = () => {
@@ -20,6 +30,7 @@ export const ProductSection = () => {
   const {shownProducts} = productFilterState
   return (
     <StyledSection>
+      <StyledTitle>¡Conocé nuestra amplia gama de productos!</StyledTitle>
       <ProductFilterFrame />
       <ProductContainer>
         {

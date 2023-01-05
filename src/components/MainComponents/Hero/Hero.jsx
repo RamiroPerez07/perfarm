@@ -36,11 +36,19 @@ const StyledImg = styled.div`
   background-position: center center;
 `;
 
+const StyledHeroDescription = styled.p`
+  font-size: 1.4rem;
+  font-weight: 300;
+  text-align: center;
+  color: ${({theme}) => theme.secondary };
+`;
+
 export const Hero = () => {
   return (
     <StyledSection>
       <StyledImg />
       <StyledH1>Perfarm</StyledH1>
+      <StyledHeroDescription>Especialistas en líneas de perfumería</StyledHeroDescription>
       <StyledBtn className='btn-style1'>Productos</StyledBtn>
     </StyledSection>
   )
