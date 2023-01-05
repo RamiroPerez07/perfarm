@@ -18,6 +18,7 @@ const StyledSection = styled.section`
 `;
 
 const StyledTitle = styled.h2`
+  width: 90%;
   font-size: 1.6rem;
   font-weight: 700;
   color: ${({theme})=>theme.secondary};
