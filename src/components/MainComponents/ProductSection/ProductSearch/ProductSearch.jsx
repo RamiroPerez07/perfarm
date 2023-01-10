@@ -7,7 +7,7 @@ import { toggleFilterProductMenu } from '../../../../redux/actions/menuManagerAc
 import { useSelector } from 'react-redux';
 import { filterProducts } from '../../../../redux/actions/productFilterActions';
 
-const StyledFrame = styled.div`
+const StyledFrame = styled.form`
   background-color: ${({theme})=> theme.frameColor};
   border-radius: 8px;
   display: grid;
@@ -27,7 +27,7 @@ const StyledInput = styled.input`
   font-size: 1.1rem;
   border-radius: 8px;
   border: none;
-  background-color: ${({theme})=> theme.primary};
+  background-color: ${({theme})=> theme.inputColor};
   color: ${({theme})=> theme.secondary};
 
   &:focus{
@@ -53,6 +53,8 @@ export const ProductSearch = () => {
 
 
   const handleFilter = (e) => {
+    e.preventDefault();
+    console.log(e);
     //genero un objeto de filtrado
     const filterParameters = {...filterState.filterValues} //me genero una copia del estado (CONCEPTO DE INMUTABILIDAD DEL ESTADO).
     const shownProducts = [...filterState.products];
@@ -61,12 +63,12 @@ export const ProductSearch = () => {
   }
 
   return (
-    <StyledFrame>
+    <StyledFrame onSubmit={handleFilter}>
       <StyledInput placeholder='Ingresa tu búsqueda' onChange={(e)=>setSearchInput(e.target.value)} />
-      <StyledBtn className='btn-style1' onClick={()=>dispatch(handleFilter)}>
+      <StyledBtn className='btn-style1' type="submit">
         <RxMagnifyingGlass />
       </StyledBtn>
-      <StyledBtn className='btn-style2' onClick={()=>dispatch(toggleFilterProductMenu())}>
+      <StyledBtn className='btn-style2' type="button" onClick={()=>dispatch(toggleFilterProductMenu())}>
         <VscFilter />
       </StyledBtn>
     </StyledFrame>
