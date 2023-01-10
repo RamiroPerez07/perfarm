@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import {IoArrowBackOutline} from 'react-icons/io5';
+import { useDispatch } from 'react-redux';
+import { showModal, hideModal } from '../../../../redux/actions/modalActions';
+import { addProductToCart } from '../../../../redux/actions/cartActions';
 
 const StyledMain = styled.main`
   width: 100%;
@@ -98,6 +101,7 @@ const StyledBtn = styled.button`
   font-size: 1.2rem;
   padding: 15px 20px;
   border-radius: 8px;
+  filter: ${({stock, quantity}) => (stock === quantity) ? 'grayscale(0.9)' : 'none' };
 `;
 
 const StyledLink = styled(Link)`
@@ -112,14 +116,35 @@ const StyledArrow = styled(IoArrowBackOutline)`
 
 export const ProductDetail = () => {
 
+  //genero la funcion para despachar las acciones (en este caso sera agregar el producto al carro)
+  const dispatch = useDispatch();
+
   //llamo al estado del carro (Esto me va a servir para obtener el listado de productos)
   const cartState = useSelector(state => state.cart)
-  const {products} = cartState;
+  const {products, cart} = cartState;
 
   const location = useLocation();
 
   //genero una funcion para obtener los productos por su numero id
   const getProductById = id => products.find(product => product.id === id);
+
+  //calculo la cantidad de producto en el carrito
+  const getProductCartQuantity = () => {
+    const cartProduct = cart.find(cartProduct => cartProduct.id === id);
+    return cartProduct ? cartProduct.quantity : 0;
+  }
+
+  const addProduct = (product) => {
+    const quantity = getProductCartQuantity();
+    if (stock <= quantity){
+      dispatch(showModal(true, `¡No hay stock suficiente del producto ${name}!`));
+      setTimeout(() => dispatch(hideModal()),3000);
+      return;
+    }  
+    dispatch(addProductToCart(currentProduct));
+    dispatch(showModal(false, `¡Producto ${name} agregado al carrito!`));
+    setTimeout(() => dispatch(hideModal()),3000);
+  }
 
   //obtengo el producto actual que me servira para mostrar los datos en la ui
   const currentProduct = getProductById(location.state.id);
@@ -137,7 +162,7 @@ export const ProductDetail = () => {
             <StyledText>{description}</StyledText>
             {free_shipping && <StyledShippingMessage>¡Este producto tiene envío gratuito!</StyledShippingMessage>}
             <StyledPrice>$ {price}</StyledPrice>
-            <StyledBtn className='btn-style1'>Agregar al carrito</StyledBtn>
+            <StyledBtn className='btn-style1' quantity={getProductCartQuantity()} stock={stock} onClick={() => addProduct(currentProduct)}>Agregar al carrito</StyledBtn>
           </StyledDescriptionContainer>
         </StyledFrame>
       </StyledMain>
