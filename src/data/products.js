@@ -66,7 +66,7 @@ export const Products = [
     description: "Eau de toilette",
     price: 1400,
     stock: 12,
-    img_url: "https://res.cloudinary.com/dhnicvwkw/image/upload/v1673367233/Perfarm/products/acqua_di_colbert_mg0ymp.png",
+    img_url: "https://res.cloudinary.com/dhnicvwkw/image/upload/v1673367233/Perfarm/products/chester_ice_wg5lcb.png",
     free_shipping: false,
   },
 ]
