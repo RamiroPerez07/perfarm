@@ -18,10 +18,11 @@ const StyledFrame = styled.form`
   grid-auto-flow: column;
   grid-auto-columns: min-content;
   padding: 15px 20px;
+  max-width: 90%;
 `;
 
 const StyledInput = styled.input`
-  width: 60vw;
+  width: 50vw;
   max-width: 500px;
   padding: 10px 15px;
   font-size: 1.1rem;

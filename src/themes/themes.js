@@ -5,7 +5,7 @@ export const lightTheme = {
   buttonColor: "#0469dd",
   buttonHover: "#3788e5",
   frameColor: "#dddddd",
-  inputColor: "#b5b5b5",
+  inputColor: "#c5c3c3",
   desktopL: '1920px',
   desktopM: '1680px',
   desktopS: '1520px',
