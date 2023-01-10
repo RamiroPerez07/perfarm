@@ -9,21 +9,23 @@ const StyledCard = styled.div`
   min-height: 80px;
   display: grid;
   grid-template-columns: 80px 1fr 80px;
-  gap: 1em;
-  padding: 1em;
+  gap: 7px;
+  padding: 10px;
   border-radius: 8px;
   background-color: ${({theme}) => theme.frameColor};
 `;
 
 const StyledImg = styled.div`
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background-image: url('${({urlImg}) => urlImg}');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
   grid-column: 1/2;
   grid-row: 1/4;
+  align-self: center;
+  justify-self: center;
 `;
 
 const StyledName = styled.h3`

@@ -16,7 +16,7 @@ const StyledCart = styled.div`
   z-index: 1;
   background-color: ${({theme}) => theme.primary};
   box-shadow: 0px 0px 5px -2px ${({theme}) => theme.secondary};
-  padding: 2em 1.5em;
+  padding: 15px;
   display: grid;
   align-content: start;
   align-items: start;
@@ -76,7 +76,7 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledProductContainer = styled.div`
-  width: 95%;
+  width: 100%;
   min-height: 300px;
   background-color: ${({theme}) => theme.primary };
   display: grid;
@@ -117,7 +117,11 @@ const StyledBtn = styled.button`
   padding: 15px 25px;
   border-radius: 10px;
   font-size: 1rem;
-  width: 50%;
+  width: 70%;
+
+  &.last-btn{
+    margin-bottom: 30px;
+  }
 `;
 
 export const Cart = () => {
@@ -184,7 +188,7 @@ export const Cart = () => {
         <StyledSpan>${calculateTotal()}</StyledSpan>
       </StyledContainer>
       <StyledBtn className="btn-style1">Comprar</StyledBtn>
-      <StyledBtn className="btn-style2" onClick = {()=> dispatch(removeAllProductsFromCart())}>Limpiar Carrito</StyledBtn>
+      <StyledBtn className="btn-style2 last-btn" onClick = {()=> dispatch(removeAllProductsFromCart())}>Limpiar Carrito</StyledBtn>
     </StyledCart>
   )
 }
