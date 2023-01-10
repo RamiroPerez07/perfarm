@@ -64,8 +64,15 @@ export const filterProductByBrand = (filterValues, products) => {
   return filterValues !== "All" ? products.filter(product => product.brand === filterValues) : products;
 }
 
+export const filterProductsByKeyword = (filterValues, products) => {
+  console.log("los filtros son => ", filterValues)
+  return filterValues !== "" ? products.filter(product => product.name.toLowerCase().includes(filterValues.toLowerCase())) : products;
+}
+
 export const filterProducts = (filterValues, products) => {
   let productList = [...products]; //genero una copia de los productos
+  productList = filterProductsByKeyword(filterValues.name, productList);
+  console.log("Filtro por palabra ==>", productList);
   productList = sortProductsByParameter(filterValues.sort, productList);
   console.log("lista ordenada ==>",productList);
   productList = filterProductsByPrice(filterValues.price, productList);

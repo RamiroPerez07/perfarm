@@ -48,7 +48,7 @@ export const GlobalStyle = createGlobalStyle`
   .btn-style1{
     background-color: ${({theme}) => theme.buttonColor};
     color: #ffffff; 
-    border: 0;
+    border: 1px solid ${({theme}) => theme.buttonColor};
     cursor: pointer;
     transition: all 0.2s linear;
 

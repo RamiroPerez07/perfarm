@@ -4,6 +4,7 @@ import { ProductFilterFrame } from '../ProductFilterFrame/ProductFilterFrame';
 import { ProductContainer } from '../ProductContainer/ProductContainer';
 import { useSelector } from 'react-redux';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductSearch } from '../ProductSearch/ProductSearch.jsx';
 
 
 const StyledSection = styled.section`
@@ -27,12 +28,18 @@ const StyledTitle = styled.h2`
 `;
 
 export const ProductSection = () => {
-  const productFilterState = useSelector(state => state.productFilter)
+  const productFilterState = useSelector(state => state.productFilter);
   const {shownProducts} = productFilterState
+
+  const menuManagerState = useSelector(state => state.menuManager);
+  const {showProductFilterMenu} = menuManagerState;
+
+
   return (
     <StyledSection>
       <StyledTitle>¡Conocé nuestra amplia gama de productos!</StyledTitle>
-      <ProductFilterFrame />
+      <ProductSearch />
+      {showProductFilterMenu && <ProductFilterFrame />}
       <ProductContainer>
         {
           shownProducts.map( (product) => {

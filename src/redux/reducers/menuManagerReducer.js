@@ -3,6 +3,7 @@ import { MENU_MANAGER_TYPES } from "../types/types"
 export const initialState = {
   showBurgerMenu :false,
   showCart : false,
+  showProductFilterMenu: false,
 }
 
 export const menuManagerReducer = (state=initialState,action) => {
@@ -19,6 +20,14 @@ export const menuManagerReducer = (state=initialState,action) => {
         ...state,
         showBurgerMenu: false,
         showCart: !state.showCart,
+      }
+    }
+    case MENU_MANAGER_TYPES.TOGGLE_FILTER_PRODUCT:{
+      return {
+        ...state,
+        showBurgerMenu: false,
+        showCart: false,
+        showProductFilterMenu: !state.showProductFilterMenu,
       }
     }
     default:

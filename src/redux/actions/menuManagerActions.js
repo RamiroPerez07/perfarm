@@ -11,3 +11,9 @@ export const toggleBurgerMenu = () => {
     type: MENU_MANAGER_TYPES.TOGGLE_BURGER_MENU,
   }
 }
+
+export const toggleFilterProductMenu = () => {
+  return {
+    type: MENU_MANAGER_TYPES.TOGGLE_FILTER_PRODUCT,
+  }
+}

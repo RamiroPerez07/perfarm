@@ -49,6 +49,8 @@ const StyledLabel = styled.label`
   font-weight: 600;
 `;
 
+
+
 export const ProductFilterFrame = () => {
 
   //llamo al estado del carro
@@ -73,6 +75,7 @@ export const ProductFilterFrame = () => {
   }
 
   return (
+
     <StyledFrame>
       <StyledFilterGroup>
         <StyledLabel>Marcas</StyledLabel>

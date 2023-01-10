@@ -6,6 +6,7 @@ const initialState = {
   products : Products,
   shownProducts: Products,
   filterValues: {
+    name: "",
     sort: "All",
     price: "All",
     brand: "All",
