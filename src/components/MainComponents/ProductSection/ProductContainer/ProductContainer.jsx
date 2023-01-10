@@ -12,8 +12,8 @@ const StyledSection = styled.section`
   align-content: start;
   justify-content: center;
   grid-auto-rows: min-content;
-  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-  padding: 2em;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  padding: 10px;
   gap: 1em;
 `;
 

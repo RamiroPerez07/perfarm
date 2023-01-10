@@ -17,9 +17,7 @@ function App() {
   return (
     <ThemeProvider theme={themeMode}>
         <GlobalStyle />
-        <div className="App">
-          <Routes />
-        </div>
+        <Routes />
     </ThemeProvider>
   );
 }

@@ -14,7 +14,7 @@ const StyledFrame = styled.div`
   justify-content: center;
   grid-auto-rows: min-content;
   gap: 1em;
-  grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
   background-color: ${({theme}) => theme.frameColor };
   border-radius: 10px;
   padding: 25px 15px;

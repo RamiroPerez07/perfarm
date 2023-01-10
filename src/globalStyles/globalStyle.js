@@ -30,14 +30,6 @@ export const GlobalStyle = createGlobalStyle`
     z-index: 0;
   } 
 
-  .App{
-    width: 100%;
-    display: grid;
-    align-items: start;
-    justify-items: center;
-    grid-auto-rows: min-content;
-  }
-
   a{
     text-decoration: none;
   }
