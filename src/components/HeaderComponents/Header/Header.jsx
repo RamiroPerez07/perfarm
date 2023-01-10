@@ -4,7 +4,6 @@ import { Navbar } from "../Navbar/Navbar";
 import { ThemeToggleBtn } from "../ThemeToggleBtn/ThemeToggleBtn";
 import { CartIcon } from "../Cart/CartIcon/CartIcon";
 import { Cart } from "../Cart/CartFrame/Cart";
-import { BurgerContainer } from "../Burger/BurgerContainer";
 import { Burger } from "../Burger/Burger";
 
 const StyledHeader = styled.header`
@@ -22,11 +21,12 @@ const StyledHeader = styled.header`
 
 const StyledHeaderContent = styled.div`
   width: 100%;
-  max-width: min(1920px , 100vw);
+  max-width: 1920px;
   padding: 10px 20px;
   display: grid;
   align-items: center;
   justify-items: end;
+  place-content: center;
   grid-auto-flow: column;
   gap: 3em;
   grid-auto-columns: min-content;
@@ -47,9 +47,7 @@ export const Header = (props) => {
         <ThemeToggleBtn theme={theme} toggleTheme={toggleTheme} />
         <CartIcon />
         <Cart />
-        <BurgerContainer>
-          <Burger />
-        </BurgerContainer>
+        <Burger />
       </StyledHeaderContent>
     </StyledHeader>
   )

@@ -11,7 +11,7 @@ const StyledNavbar = styled.nav`
 
 
   @media (max-width: ${({theme}) => theme.mobile}){
-    width: 100vw;
+    width: 100%;
     height: 40vh;
     position: absolute;
     top: 60px;

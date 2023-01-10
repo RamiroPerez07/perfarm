@@ -1,6 +1,5 @@
 // Burger.js
 import React from 'react';
-import { bool, func } from 'prop-types';
 import styled from "styled-components";
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -23,23 +22,20 @@ export const Burger = () => {
   )
 }
 
-Burger.propTypes = {
-  openBurgerMenu: bool.isRequired,
-  setOpenBurgerMenu: func.isRequired,
-};
 
 const StyledBurger = styled.button`
-  display: grid;
   grid-template-columns: 1fr;
   align-content: stretch;
   align-items: center;
-  width: 1.5em;
+  justify-items: center;
+  width: 30px;
   height: 2em;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
   z-index: 10;
+  display: none;
   
   &:focus {
     outline: none;
@@ -63,5 +59,9 @@ const StyledBurger = styled.button`
   }
   div:nth-child(3){
     transform: ${ ({showBurgerMenu}) => showBurgerMenu ? 'rotateZ(-45deg)' : 'rotateZ(0)' };
+  }
+
+  @media (max-width: ${({theme})=>theme.mobile}){
+    display: grid;
   }
 `;

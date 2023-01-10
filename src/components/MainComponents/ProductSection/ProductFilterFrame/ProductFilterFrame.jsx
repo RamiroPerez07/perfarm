@@ -8,10 +8,13 @@ import {filterProducts} from '../../../../redux/actions/productFilterActions.js'
 const StyledFrame = styled.div`
   width: 95%; 
   display: grid;
-  gap: 2em;
   align-items: start;
   justify-items: center;
-  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  align-content: start;
+  justify-content: center;
+  grid-auto-rows: min-content;
+  gap: 1em;
+  grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
   background-color: ${({theme}) => theme.frameColor };
   border-radius: 10px;
   padding: 25px 15px;
@@ -19,7 +22,7 @@ const StyledFrame = styled.div`
 
 const StyledFilterGroup = styled.div`
   width: 95%;
-  max-width: 280px;
+  max-width: 250px;
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
