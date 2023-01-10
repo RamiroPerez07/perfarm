@@ -14,6 +14,10 @@ const StyledMain = styled.main`
   grid-auto-rows: min-content;
   padding: 0px 30px 10px 30px;
   margin-top: 90px;
+
+  @media (max-width: ${({theme})=>theme.mobile}){
+    padding: 0px 10px 10px 10px;
+  }
 `;
 
 const StyledFrame = styled.div`
@@ -21,14 +25,14 @@ const StyledFrame = styled.div`
   min-height: 400px;
   padding: 10px 15px;
   display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
   gap: 15px;
   align-items: center;
   justify-items: center;
 `;
 
 const StyledImg = styled.div`
-  width: 100%;
+  width: 95%;
   min-height: 400px;
   background-image: ${({imgUrl})=>`url('${imgUrl}')`};
   background-repeat: no-repeat;
@@ -38,7 +42,7 @@ const StyledImg = styled.div`
 
 const StyledDescriptionContainer = styled.div`
   background-color: ${({theme})=>theme.frameColor};
-  width: 100%;
+  width: 95%;
   height: 100%;
   display: grid;
   grid-auto-flow: row;
@@ -47,7 +51,7 @@ const StyledDescriptionContainer = styled.div`
   justify-items: center;
   align-items: start;
   grid-auto-rows: min-content;
-  padding: 30px;
+  padding: 30px 20px;
   border-radius: 8px;
 `;
 
@@ -69,7 +73,7 @@ const StyledText = styled.p`
   font-size: 1.1rem;
   font-weight: 500;
   color: ${({theme}) => theme.secondary};
-  text-align: justify;
+  text-align: center;
   margin-top: 25px;
 `;
 
