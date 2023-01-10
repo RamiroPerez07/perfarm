@@ -6,7 +6,7 @@ import {filterProducts} from '../../../../redux/actions/productFilterActions.js'
 
 
 const StyledFrame = styled.div`
-  width: 95%; 
+  width: 90%; 
   display: grid;
   align-items: start;
   justify-items: center;

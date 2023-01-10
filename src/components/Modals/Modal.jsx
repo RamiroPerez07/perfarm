@@ -17,6 +17,7 @@ const StyledModal = styled.div`
 
   &.showModal{
     bottom: 15px;
+    left: 2.5%;
     transition: all 0.3s cubic-bezier(0,.56,0,.86);
   }
 `;
