@@ -37,6 +37,7 @@ export const GlobalStyle = createGlobalStyle`
   main{
     width: 100%;
     max-width: 1980px;
+    min-height: 100vh;
     display: grid;
     align-items: start;
     justify-items: center;

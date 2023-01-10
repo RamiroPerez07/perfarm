@@ -6,7 +6,7 @@ export const Products = [
     description: "Eau da parfum",
     price: 25000,
     stock: 5,
-    img_url: "./img/products/bleu_de_chanel.png",
+    img_url: "https://res.cloudinary.com/dhnicvwkw/image/upload/v1673367235/Perfarm/products/bleu_de_chanel_g1hkqi.png",
     free_shipping: false,
   },
   {
@@ -16,7 +16,7 @@ export const Products = [
     description: "Eau da parfum",
     price: 22000,
     stock: 0,
-    img_url: "./img/products/mon-guerlain.png",
+    img_url: "https://res.cloudinary.com/dhnicvwkw/image/upload/v1673367237/Perfarm/products/mon-guerlain_mtrmqn.png",
     free_shipping: false,
   },
   {
@@ -26,7 +26,7 @@ export const Products = [
     description: "Perfum initial",
     price: 55000,
     stock: 3,
-    img_url: "./img/products/shalimar.png",
+    img_url: "https://res.cloudinary.com/dhnicvwkw/image/upload/v1673367238/Perfarm/products/shalimar_x4i28x.png",
     free_shipping: true,
   },
   {
@@ -36,7 +36,7 @@ export const Products = [
     description: "Oceano",
     price: 7800,
     stock: 4,
-    img_url: "./img/products/kaiak_oceano.png",
+    img_url: "https://res.cloudinary.com/dhnicvwkw/image/upload/v1673367234/Perfarm/products/kaiak_oceano_kmassh.png",
     free_shipping: false,
   },
   {
@@ -46,7 +46,7 @@ export const Products = [
     description: "For men",
     price: 18000,
     stock: 2,
-    img_url: "./img/products/onemillion.png",
+    img_url: "https://res.cloudinary.com/dhnicvwkw/image/upload/v1673367234/Perfarm/products/onemillion_xhamyc.png",
     free_shipping: true,
   },
   {
@@ -56,7 +56,7 @@ export const Products = [
     description: "Eau de toilette",
     price: 2590,
     stock: 8,
-    img_url: "./img/products/acqua_di_colbert.png",
+    img_url: "https://res.cloudinary.com/dhnicvwkw/image/upload/v1673367233/Perfarm/products/acqua_di_colbert_mg0ymp.png",
     free_shipping: false,
   },
   {
@@ -66,7 +66,7 @@ export const Products = [
     description: "Eau de toilette",
     price: 1400,
     stock: 12,
-    img_url: "./img/products/chester_ice.png",
+    img_url: "https://res.cloudinary.com/dhnicvwkw/image/upload/v1673367233/Perfarm/products/acqua_di_colbert_mg0ymp.png",
     free_shipping: false,
   },
 ]

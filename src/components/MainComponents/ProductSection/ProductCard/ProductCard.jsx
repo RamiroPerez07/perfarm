@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { addProductToCart } from '../../../../redux/actions/cartActions.js';
 import { hideModal, showModal } from '../../../../redux/actions/modalActions.js';
@@ -13,15 +14,15 @@ const StyledCard = styled.div`
   justify-items: center;
   justify-content: center;
   grid-auto-rows: min-content;
-  padding: 1em;
-  gap: 1.5em;
+  padding: 20px;
+  gap: 10px;
   background-color: ${({theme}) => theme.frameColor };
   border-radius: 10px;
   box-shadow: 0px 0px 5px -4px ${({theme}) => theme.primary };
 `;
 
 const StyledImg = styled.div`
-  width: 200px;
+  width: 180px;
   height: 150px;
   background-image: ${({imgUrl})=>`url('${imgUrl}')`};
   background-repeat: no-repeat;
@@ -47,8 +48,19 @@ const StyledPrice = styled.h4`
   font-size: 1.1rem;
 `;
 
+const StyledBtnContainer = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: center;
+  align-items: center;
+  place-content: center;
+  gap: 20px;
+  /*grid-auto-columns: min-content;*/
+  width: 100%;
+`;
+
 const StyledButton = styled.button`
-  padding: 15px 20px;
+  padding: 10px 15px;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 500;
@@ -57,7 +69,9 @@ const StyledButton = styled.button`
 
 export const ProductCard = ({productId, productName,productBrand,productDescription,productPrice,productStock, productImg, productFreeShipping}) => {
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   //obtengo el estado y selecciono el del carrito
   const state = useSelector(state => state.cart);
@@ -98,7 +112,10 @@ export const ProductCard = ({productId, productName,productBrand,productDescript
       <StyledTitle>{productName}</StyledTitle>
       <StyledBrand>{productBrand}</StyledBrand>
       <StyledPrice>$ {productPrice}</StyledPrice>
-      <StyledButton className='btn-style1' stock={productStock} quantity={getProductCartQuantity()} onClick={() => addProduct(product)}>Agregar</StyledButton>
+      <StyledBtnContainer>
+        <StyledButton className='btn-style1' stock={productStock} quantity={getProductCartQuantity()} onClick={() => addProduct(product)}>Agregar</StyledButton>
+        <StyledButton className='btn-style2' onClick={()=>navigate(`${productName}`,{state:{id:productId}})} >+ Info</StyledButton>
+      </StyledBtnContainer>
     </StyledCard>
   )
 }

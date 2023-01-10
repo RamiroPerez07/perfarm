@@ -25,7 +25,7 @@ const StyledImg404 = styled.div`
   width: 90%;
   max-width: 400px;
   height: 200px;
-  background-image: url('./img/utils/404.png');
+  background-image: url('https://res.cloudinary.com/dhnicvwkw/image/upload/v1673367267/Perfarm/404_axk0c4.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;

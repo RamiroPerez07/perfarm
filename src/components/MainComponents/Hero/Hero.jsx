@@ -32,7 +32,7 @@ const StyledImg = styled.div`
   width: 90%;
   max-width: 150px;
   height: 150px;
-  background-image: url('./img/bg_abstract.png');
+  background-image: url('https://res.cloudinary.com/dhnicvwkw/image/upload/v1673367275/Perfarm/bg_abstract_nkcbrw.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
