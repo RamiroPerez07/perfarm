@@ -51,9 +51,9 @@ export const Navbar = () => {
   return (
     <>
       <StyledNavbar showBurgerMenu={showBurgerMenu}>
-        <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/'}>Home</StyledLink>
-        <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/productos'}>Products</StyledLink>
-        <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/contacto'}>Contact</StyledLink>
+        <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/'}>Inicio</StyledLink>
+        <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/productos'}>Productos</StyledLink>
+        <StyledLink className={({ isActive }) => (isActive ? "active" : "")} to={'/contacto'}>Contacto</StyledLink>
       </StyledNavbar>
     </>
   )
