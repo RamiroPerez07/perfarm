@@ -42,18 +42,8 @@ export const ProductSection = () => {
       {showProductFilterMenu && <ProductFilterFrame />}
       <ProductContainer>
         {
-          shownProducts.map( (product) => {
-            return (<ProductCard 
-                      productId = {product.id}
-                      productName = {product.name}
-                      productBrand = {product.brand}
-                      productDescription = {product.description}
-                      productPrice = {product.price}
-                      productStock = {product.stock}
-                      productImg = {product.img_url}
-                      productFreeShipping = {product.free_shipping}
-                      key = {product.id}
-                    />)
+          shownProducts.map( product => {
+            return (<ProductCard {...product} key = {product.id} />)
           })
         }
       </ProductContainer>

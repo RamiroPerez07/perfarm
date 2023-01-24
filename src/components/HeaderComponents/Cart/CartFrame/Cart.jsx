@@ -158,18 +158,7 @@ export const Cart = () => {
           state.cart.map(product => {
             console.log("carrito ==>", product)
             return (
-              <CartProduct 
-              productId = {product.id}
-              productDescription = {product.description}
-              productImg= {product.img_url}
-              productName = {product.name}
-              productBrand = {product.brand}
-              productPrice = {product.price}
-              productQuantity = {product.quantity}
-              productStock = {product.stock}
-              productFreeShipping = {product.free_shipping}
-              key = {product.id}
-            />
+              <CartProduct {...product} key = {product.id} />
             )
           })
         }

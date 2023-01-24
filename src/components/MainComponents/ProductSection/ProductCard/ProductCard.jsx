@@ -1,9 +1,7 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { addProductToCart } from '../../../../redux/actions/cartActions.js';
-import { hideModal, showModal } from '../../../../redux/actions/modalActions.js';
+import { BtnAddProduct } from '../ButtonAddProduct/BtnAddProduct.jsx';
 
 const StyledCard = styled.div`
   width: 95%;
@@ -64,57 +62,26 @@ const StyledButton = styled.button`
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 500;
-  filter: ${({stock, quantity}) => (stock === quantity) ? 'grayscale(0.9)' : 'none' };
 `;
 
-export const ProductCard = ({productId, productName,productBrand,productDescription,productPrice,productStock, productImg, productFreeShipping}) => {
-
-  const dispatch = useDispatch();
+export const ProductCard = (props) => {
 
   const navigate = useNavigate();
 
-  //obtengo el estado y selecciono el del carrito
-  const state = useSelector(state => state.cart);
-  const {cart} = state
+
+  const product = {...props};
 
 
-  const getProductCartQuantity = () => {
-    const cartProduct = cart.find(cartProduct => cartProduct.id === productId);
-    return cartProduct ? cartProduct.quantity : 0;
-  }
-
-  const product = {
-    id: productId,
-    name: productName,
-    brand: productBrand,
-    description: productDescription,
-    price: productPrice,
-    stock: productStock,
-    img_url: productImg,
-    free_shipping: productFreeShipping
-  };
-
-  const addProduct = (product) => {
-    const quantity = getProductCartQuantity();
-    if (product.stock <= quantity){
-      dispatch(showModal(true, `¡No hay stock suficiente del producto ${product.name}!`));
-      setTimeout(() => dispatch(hideModal()),3000);
-      return;
-    }  
-    dispatch(addProductToCart(product));
-    dispatch(showModal(false, `¡Producto ${product.name} agregado al carrito!`));
-    setTimeout(() => dispatch(hideModal()),3000);
-  }
 
   return (
     <StyledCard>
-      <StyledImg imgUrl={productImg} />
-      <StyledTitle>{productName}</StyledTitle>
-      <StyledBrand>{productBrand}</StyledBrand>
-      <StyledPrice>$ {productPrice}</StyledPrice>
+      <StyledImg imgUrl={props.img_url} />
+      <StyledTitle>{props.name}</StyledTitle>
+      <StyledBrand>{props.brand}</StyledBrand>
+      <StyledPrice>$ {props.price}</StyledPrice>
       <StyledBtnContainer>
-        <StyledButton className='btn-style1' stock={productStock} quantity={getProductCartQuantity()} onClick={() => addProduct(product)}>Agregar</StyledButton>
-        <StyledButton className='btn-style2' onClick={()=>navigate(`${productName}`,{state:{id:productId}})} >+ Info</StyledButton>
+        <BtnAddProduct product={product} padding="10px 15px" fs="1rem" txt="Agregar" />
+        <StyledButton className='btn-style2' onClick={()=>navigate(`${props.name}`,{state:{id:props.id}})} >+ Info</StyledButton>
       </StyledBtnContainer>
     </StyledCard>
   )

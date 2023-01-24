@@ -100,33 +100,23 @@ const StyledQuantity = styled.span`
   font-weight: 800;
 `;
 
-export const CartProduct = ({productId, productDescription, productName, productImg, productBrand, productPrice, productQuantity, productStock, productFreeShipping}) => {
+export const CartProduct = (props) => {
   
   const dispatch = useDispatch();
   
-  const product = {
-    id: productId,
-    name: productName,
-    img_url: productImg,
-    brand: productBrand,
-    price: productPrice,
-    description: productDescription,
-    quantity: productQuantity,
-    stock: productStock,
-    free_shipping: productFreeShipping,
-  }
+  const product = {...props}
 
   return (
     <StyledCard>
-      <StyledImg urlImg = {productImg}></StyledImg>
-      <StyledName>{productName}</StyledName>
-      <StyledBrand>{productBrand}</StyledBrand>
-      <StyledPrice>$ {productPrice}</StyledPrice>
+      <StyledImg urlImg = {props.img_url}></StyledImg>
+      <StyledName>{props.name}</StyledName>
+      <StyledBrand>{props.brand}</StyledBrand>
+      <StyledPrice>$ {props.price}</StyledPrice>
       <StyledTrash onClick={() => dispatch(removeProductFromCart(product))} />
       <StyledControllerContainer>
         <StyledBtnDecrementQuantity className="btn-style1" onClick={() => dispatch(subtractProductFromCart(product))}>-</StyledBtnDecrementQuantity>
-        <StyledQuantity>{productQuantity}</StyledQuantity>
-        <StyledBtnIncrementQuantity className="btn-style1" quantity={productQuantity} stock={productStock} onClick={() => dispatch(addProductToCart(product))}>+</StyledBtnIncrementQuantity>
+        <StyledQuantity>{props.quantity}</StyledQuantity>
+        <StyledBtnIncrementQuantity className="btn-style1" quantity={props.quantity} stock={props.stock} onClick={() => dispatch(addProductToCart(product))}>+</StyledBtnIncrementQuantity>
       </StyledControllerContainer>
     </StyledCard>
   )
