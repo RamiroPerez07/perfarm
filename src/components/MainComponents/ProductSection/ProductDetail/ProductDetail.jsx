@@ -1,8 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import {IoArrowBackOutline} from 'react-icons/io5';
 import { BtnAddProduct } from '../ButtonAddProduct/BtnAddProduct';
 
 const StyledMain = styled.main`
@@ -96,15 +95,8 @@ const StyledShippingMessage = styled.p`
 `;
 
 
-const StyledLink = styled(Link)`
-  justify-self: start;
-`;
 
-const StyledArrow = styled(IoArrowBackOutline)`
-  font-size: 2rem;
-  font-weight: 800;
-  color: ${({theme}) => theme.secondary};
-`;
+
 
 export const ProductDetail = () => {
 
@@ -128,7 +120,6 @@ export const ProductDetail = () => {
   return (
     <>
       <StyledMain>
-        <StyledLink to={"/productos"}><StyledArrow /></StyledLink>
         <StyledFrame>
           <StyledImg imgUrl={img_url} />
           <StyledDescriptionContainer>

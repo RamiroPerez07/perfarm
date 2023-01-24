@@ -6,17 +6,20 @@ import {store} from './redux/store/index.js'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { DarkModeContextProvider } from './contexts/darkModeContext';
+import { ReturnArrowContextProvider } from './contexts/productArrowBack';
 //import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <DarkModeContextProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </DarkModeContextProvider>
+      <ReturnArrowContextProvider>
+        <DarkModeContextProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </DarkModeContextProvider>
+      </ReturnArrowContextProvider>
     </Provider>
   </React.StrictMode>
 );
