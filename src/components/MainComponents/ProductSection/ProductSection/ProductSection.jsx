@@ -35,6 +35,7 @@ export const ProductSection = () => {
   const {showProductFilterMenu} = menuManagerState;
 
 
+
   return (
     <StyledSection>
       <StyledTitle>¡Conocé nuestra amplia gama de productos!</StyledTitle>

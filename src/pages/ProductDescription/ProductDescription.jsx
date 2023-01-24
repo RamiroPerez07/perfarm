@@ -20,6 +20,7 @@ export const ProductDescription = () => {
   useEffect(()=>{
     //cada vez que se monta el componente, ejecuto la funcion que setea la visibilidad del componente
     setShowReturnArrow(true);
+    return (() => setShowReturnArrow(false)); //se retorna una funcion que desactiva la visibilidad del componente. Simula ComponentWillUnmounted.
   },[setShowReturnArrow]) //pasamos el array para que solo se ejecute al montarse el componente y cambiar la funcion del actualizacion
 
   return (

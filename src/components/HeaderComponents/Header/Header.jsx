@@ -67,14 +67,14 @@ export const Header = (props) => {
 
   //me traigo la data del contexto de flecha de retorno
   const arrowData = useContext(ReturnArrowContext);
-  const {showReturnArrow,setShowReturnArrow} = arrowData;
+  const {showReturnArrow} = arrowData;
 
 
   return (
     <StyledHeader>
       <StyledHeaderContent>
         <StyledHeaderContainer>
-          {showReturnArrow && <StyledLink to={"/productos"} onClick={()=>{setShowReturnArrow(false)}}><StyledArrow /></StyledLink>}
+          {showReturnArrow && <StyledLink to={"/productos"}><StyledArrow /></StyledLink>}
         </StyledHeaderContainer>
         <StyledHeaderContainer>
           <Navbar />
