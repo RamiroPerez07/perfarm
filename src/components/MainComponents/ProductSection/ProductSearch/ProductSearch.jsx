@@ -40,6 +40,8 @@ const StyledBtn = styled.button`
   padding: 10px;
   border-radius: 8px;
   font-size: 1.1rem;
+  display: grid;
+  place-items: center;
 `;
 
 

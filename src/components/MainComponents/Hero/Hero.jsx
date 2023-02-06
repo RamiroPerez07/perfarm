@@ -51,7 +51,7 @@ export const Hero = () => {
   return (
     <StyledSection>
       <StyledImg />
-      <StyledH1>Perfarm</StyledH1>
+      <StyledH1>Giza</StyledH1>
       <StyledHeroDescription>Especialistas en líneas de perfumería</StyledHeroDescription>
       <StyledBtn onClick={()=>navigate('/productos')} className='btn-style1'>Productos</StyledBtn>
     </StyledSection>
