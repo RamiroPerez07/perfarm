@@ -4,6 +4,7 @@ import {Home} from '../pages/Home/Home.jsx';
 import {Products} from '../pages/Products/Products.jsx';
 import {Error404} from '../components/Error404/Error404.jsx';
 import {ProductDescription} from '../pages/ProductDescription/ProductDescription.jsx';
+import { Contact } from '../pages/Contact/Contact.jsx';
 
 export const Routes = () => {
   return (
@@ -15,7 +16,7 @@ export const Routes = () => {
         <Route index element={<Products />} />
         <Route path=':productos' element={<ProductDescription />} />
       </Route>
-      <Route path='/productos' element={<Products />} />
+      <Route path='/contacto' element={<Contact />} />
       {/* ruta del error 404*/}
       <Route path='*' element={<Error404 />} />
     </ReactDomRoutes>
