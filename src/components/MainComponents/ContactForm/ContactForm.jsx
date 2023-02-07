@@ -100,7 +100,7 @@ export const ContactForm = () => {
     <>
       <StyledSection>
         <StyledSubtitle>Contacto</StyledSubtitle>
-        <StyledForm action="" noValidate>
+        <StyledForm onSubmit={(e) => {e.preventDefault();handleSubmit()}} action="" noValidate>
           <ContactInput id="contact-firstname" type="text" label="Nombre" errors={touched.firstname && errors.firstname} {...getFieldProps("firstname")} />
           <ContactInput id="contact-lastname" type="text" label="Apellido" errors={touched.lastname && errors.lastname} {...getFieldProps("lastname")} />
           <ContactInput id="contact-tel" type="tel" label="Teléfono/Celular" errors={touched.tel && errors.tel} {...getFieldProps("tel")} />
