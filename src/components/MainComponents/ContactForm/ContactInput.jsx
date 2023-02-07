@@ -21,9 +21,9 @@ const StyledInput = styled.input`
   padding: 10px 15px;
   font-size: 1rem;
   border-radius: 8px;
-  border: none;
-  background-color: ${({theme})=> theme.inputColor};
-  color: ${({theme})=> theme.secondary};
+  border: ${(props) => props.errors?"1px solid #ff0000":"none"};
+  background-color: ${({theme}) => theme.inputColor};
+  color: ${({theme,...props})=> props.errors? "#ff0000" : theme.secondary};
 
   &:focus{
     outline: none;
@@ -37,9 +37,9 @@ const StyledTextArea = styled.textarea`
   padding: 10px 15px;
   font-size: 1.1rem;
   border-radius: 8px;
-  border: none;
+  border: ${(props) => props.errors?"1px solid #ff0000":"none"};
   background-color: ${({theme})=> theme.inputColor};
-  color: ${({theme})=> theme.secondary};
+  color: ${({theme,...props})=> props.errors? "#ff0000" : theme.secondary};
 
   &:focus{
     outline: none;
@@ -61,8 +61,8 @@ export const ContactInput = (props) => {
     <>
       <StyledFormField>
         <StyledLabel htmlFor={props.id}>{props.label}</StyledLabel>
-        {props.textarea?<StyledTextArea name={props.id} id={props.id} placeholder={props.placeholder} value={props.value} />:<StyledInput type={props.type} name={props.id} id={props.id} placeholder={props.placeholder} value={props.value} />}
-        <StyledMsgError />
+        {props.textarea?<StyledTextArea name={props.id} id={props.id} placeholder={props.placeholder} {...props} />:<StyledInput type={props.type} name={props.id} id={props.id} placeholder={props.placeholder} {...props} />}
+        {props.errors && <StyledMsgError>{props.errors}</StyledMsgError>}
       </StyledFormField>
     </>
   )
