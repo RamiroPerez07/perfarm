@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import {RxMagnifyingGlass} from 'react-icons/rx';
 import {VscFilter} from 'react-icons/vsc';
+
 import { useDispatch } from 'react-redux';
 import { toggleFilterProductMenu } from '../../../../redux/actions/menuManagerActions';
 import { useSelector } from 'react-redux';
 import { filterProducts } from '../../../../redux/actions/productFilterActions';
 
 const StyledFrame = styled.form`
-  background-color: ${({theme})=> theme.frameColor};
+  /*background-color: ${({theme})=> theme.frameColor};*/
   border-radius: 8px;
   display: grid;
   align-items: start;

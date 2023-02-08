@@ -16,7 +16,7 @@ const StyledCard = styled.div`
   gap: 10px;
   background-color: ${({theme}) => theme.frameColor };
   border-radius: 10px;
-  box-shadow: 0px 0px 5px -4px ${({theme}) => theme.primary };
+  box-shadow: 0px 0px 5px -2px #1C2023 /*${({theme}) => theme.secondary }*/;
 `;
 
 const StyledImg = styled.div`

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { CartProduct } from '../CartProduct/CartProduct';
 import { removeAllProductsFromCart } from '../../../../redux/actions/cartActions';
 import { toggleCart } from '../../../../redux/actions/menuManagerActions';
+import { useNavigate } from 'react-router-dom';
 
 
 const StyledCart = styled.div`
@@ -126,6 +127,9 @@ const StyledBtn = styled.button`
 
 export const Cart = () => {
 
+  //funcion para navegar en las rutas
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   //llamo al estado del menu
@@ -176,7 +180,7 @@ export const Cart = () => {
         <StyledSubtitles>Total</StyledSubtitles>
         <StyledSpan>${calculateTotal()}</StyledSpan>
       </StyledContainer>
-      <StyledBtn className="btn-style1">Comprar</StyledBtn>
+      <StyledBtn className="btn-style1" onClick={() => navigate("/confirmar-pedido") }>Comprar</StyledBtn>
       <StyledBtn className="btn-style2 last-btn" onClick = {()=> dispatch(removeAllProductsFromCart())}>Limpiar Carrito</StyledBtn>
     </StyledCart>
   )

@@ -9,11 +9,11 @@ const StyledFilterGroup = styled.div`
   grid-auto-rows: min-content;
   align-items: start;
   justify-items: center;
-  gap: 1em;
+  gap: 7px;
 `;
 
 const StyledSelect = styled.select`
-  width: 95%;
+  width: 100%;
   max-width: 250px;
   min-height: 45px;
   color: ${({theme}) => theme.secondary};
@@ -22,12 +22,14 @@ const StyledSelect = styled.select`
   cursor: pointer;
   outline: none;
   padding: 10px 15px;
+  font-size: 0.8rem;
 `;
 
 const StyledLabel = styled.label`
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: ${({theme}) => theme.secondary};
   font-weight: 600;
+  justify-self: start;
 `;
 
 export const ProductFilter = (props) => {

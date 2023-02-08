@@ -2,24 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import {store} from './redux/store/index.js'
+import {store, persistor} from './redux/store/index.js'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { DarkModeContextProvider } from './contexts/darkModeContext';
 import { ReturnArrowContextProvider } from './contexts/productArrowBack';
+import { PersistGate } from 'redux-persist/integration/react';
 //import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ReturnArrowContextProvider>
+      <PersistGate persistor={persistor}>
         <DarkModeContextProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <ReturnArrowContextProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </ReturnArrowContextProvider>
         </DarkModeContextProvider>
-      </ReturnArrowContextProvider>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

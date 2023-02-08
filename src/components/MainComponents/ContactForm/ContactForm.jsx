@@ -11,21 +11,26 @@ const StyledSection = styled.section`
   margin-bottom: 50px;
   min-height: min(1020px, calc(100vh - 60px));
   display: grid;
-  align-content: center;
-  justify-content: stretch;
-  place-items: center;
-  gap: 3em;
+  justify-items: center;
+  align-items: start;
+  gap: 10px;
+  grid-auto-rows: min-content;
 `;
 
 const StyledForm = styled.form`
   width: 95%;
   max-width: 900px;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   grid-auto-flow: row;
   justify-items: center;
   align-items: start;
-  gap: 10px;
+  gap: 5px;
   grid-auto-rows: min-content;
+
+  @media(max-width: ${({theme}) => theme.mobile}){
+    grid-template-columns: 1fr;
+  }
 `;
 
 const StyledSubtitle = styled.h2`
@@ -43,6 +48,12 @@ const StyledBtn = styled.button`
   font-size: 1rem;
   font-weight: 500;
   margin-top: 20px;
+  justify-self: center;
+  grid-column: 1/3;
+
+  @media(max-width: ${({theme})=>theme.mobile}){
+    grid-column: auto;
+  }
 `;
 
 export const ContactForm = () => {

@@ -15,7 +15,7 @@ const StyledFrame = styled.div`
   align-content: start;
   justify-content: center;
   grid-auto-rows: min-content;
-  gap: 10px;
+  gap: 5px;
   grid-template-columns: 1fr;
   border-radius: 10px;
   padding: 25px 15px;
@@ -40,7 +40,7 @@ const StyledOptionFrame = styled.div`
   align-content: start;
   justify-content: center;
   grid-auto-rows: min-content;
-  gap: 1em;
+  gap: 15px;
   grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
   padding: 10px;
 `;
